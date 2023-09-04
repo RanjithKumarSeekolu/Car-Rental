@@ -1,22 +1,54 @@
 import React from "react";
-import HeaderContainer from "./components/Header/HeaderContainer";
+import Headlinecontainer from "./components/Headline/HeadlineContainer";
+import Header from "./components/Header/Header";
 import Summary from "./components/Summary/Summary";
-import Services from "./components/Services/Services";
+import OurServices from "./components/OurServices/OurServices";
 import AvailableCars from "./components/Cars/AvailableCars";
 import Footer from "./components/Footer/Footer";
 import Booking from "./components/Booking/Booking";
+import { createBrowserRouter, Outlet } from "react-router-dom";
+import AllCars from "./components/Cars/AllCars";
+import CarHost from "./components/CarHost/CarHost";
 
 const App = () => {
   return (
     <>
-      <HeaderContainer />
+      <Header />
+      <Outlet />
+    </>
+  );
+};
+
+const Body = () => {
+  return (
+    <>
+      <Headlinecontainer />
       <Booking />
       <Summary />
-      <Services />
+      <OurServices />
       <AvailableCars />
       <Footer />
     </>
   );
 };
 
-export default App;
+export const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        index: "/", // Use 'index' to match the root path
+        element: <Body />,
+      },
+      {
+        path: "/allCars",
+        element: <AllCars />,
+      },
+      {
+        path: "/carHost",
+        element: <CarHost />,
+      },
+    ],
+  },
+]);

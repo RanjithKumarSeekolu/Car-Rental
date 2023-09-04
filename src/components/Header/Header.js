@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -10,7 +11,9 @@ const Header = () => {
   return (
     <>
       <div className="flex justify-between items-center shadow-md px-[6%] py-5 fixed w-full z-20 bg-white font-bold">
-        <div>Logo</div>
+        <Link to="/">
+          <div>Logo</div>
+        </Link>
         <div className="md:flex items-center justify-between hidden space-x-5">
           <div className="hover:text-blue-800 cursor-pointer">About</div>
           <div className="hover:text-blue-800 cursor-pointer">Features</div>

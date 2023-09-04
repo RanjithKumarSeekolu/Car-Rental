@@ -157,6 +157,8 @@ export const car_categories = [
           transmission: "CVT",
           seating_capacity: 8,
         },
+        image_url:
+          "https://www.motortrend.com/uploads/2023/06/039-2024-Subaru-Ascent-Front-view.jpg?fit=around%7C875:492.1875",
       },
       {
         id: 110,
@@ -171,6 +173,8 @@ export const car_categories = [
           transmission: "Automatic",
           seating_capacity: 8,
         },
+        image_url:
+          "https://www.motortrend.com/uploads/2022/04/2023-Kia-Telluride-14.jpg?fit=around%7C770:481.25",
       },
       {
         id: 111,
@@ -185,6 +189,8 @@ export const car_categories = [
           transmission: "Automatic",
           seating_capacity: 7,
         },
+        image_url:
+          "https://www.motortrend.com/uploads/2022/09/001-2023-GMC-Acadia.jpg?fit=around%7C875:492.1875",
       },
       {
         id: 112,
@@ -199,6 +205,8 @@ export const car_categories = [
           transmission: "Automatic",
           seating_capacity: 7,
         },
+        image_url:
+          "https://www.motortrend.com/uploads/sites/5/2021/08/2022-Volkswagen-Atlas-SEL-V6-4Motion-Basecamp-34.jpg?fit=around%7C770:481.25",
       },
     ],
   },
@@ -220,7 +228,7 @@ export const car_categories = [
           seating_capacity: 5,
         },
         image_url:
-          "https://www.motortrend.com/uploads/sites/10/2020/12/2021-subaru-ascent-limited-4wd-suv-angular-front.png?fit=around%7C875:492.1875",
+          "https://www.motortrend.com/uploads/2023/02/2024-Toyota-Camry-rendering-front.jpg?fit=around%7C875:492.1875",
       },
       {
         id: 202,
@@ -235,6 +243,8 @@ export const car_categories = [
           transmission: "CVT",
           seating_capacity: 5,
         },
+        image_url:
+          "https://www.motortrend.com/uploads/2022/09/2023-Honda-Civic-Sport-HPD-exterior-6.jpg?fit=around%7C875:492.1875",
       },
       {
         id: 203,
@@ -249,6 +259,8 @@ export const car_categories = [
           transmission: "Automatic",
           seating_capacity: 5,
         },
+        image_url:
+          "https://www.motortrend.com/uploads/2022/06/2023-Nissan-Altima-SR-2.0-VC-Turbo-29.jpg?fit=around%7C770:481.25",
       },
       {
         id: 204,
@@ -263,6 +275,8 @@ export const car_categories = [
           transmission: "Automatic",
           seating_capacity: 5,
         },
+        image_url:
+          "https://www.motortrend.com/uploads/sites/5/2020/06/2020-ford-fusion-hybrid.png?fit=around%7C875:492.1875",
       },
       {
         id: 205,
@@ -277,6 +291,8 @@ export const car_categories = [
           transmission: "CVT",
           seating_capacity: 5,
         },
+        image_url:
+          "https://www.motortrend.com/uploads/sites/5/2020/12/2021-Chevrolet-Malibu-4.jpg?fit=around%7C875:492.1875",
       },
       {
         id: 206,
@@ -291,6 +307,8 @@ export const car_categories = [
           transmission: "Automatic",
           seating_capacity: 5,
         },
+        image_url:
+          "https://www.motortrend.com/uploads/2022/07/2023-Hyundai-Elantra-Hybrid-Limited-4.jpg?fit=around%7C875:492.1875",
       },
       {
         id: 207,
@@ -305,6 +323,8 @@ export const car_categories = [
           transmission: "Automatic",
           seating_capacity: 5,
         },
+        image_url:
+          "https://www.iihs.org/cdn-cgi/image/width=636/api/ratings/model-year-images/2906/",
       },
       {
         id: 208,
@@ -507,6 +527,8 @@ export const car_categories = [
           transmission: "Automatic",
           seating_capacity: 5,
         },
+        image_url:
+          "https://www.motortrend.com/uploads/sites/5/2021/06/2022-toyota-corolla-cross-exterior-03.jpg?fit=around%7C770:481.25",
       },
       {
         id: 302,
@@ -521,6 +543,8 @@ export const car_categories = [
           transmission: "Automatic",
           seating_capacity: 5,
         },
+        image_url:
+          "https://www.motortrend.com/uploads/sites/10/2017/10/2018-honda-fit-ex-hatchback-angular-front.png?fit=around%7C875:492.1875",
       },
       {
         id: 303,
@@ -535,6 +559,8 @@ export const car_categories = [
           transmission: "Automatic",
           seating_capacity: 5,
         },
+        image_url:
+          "https://www.motortrend.com/uploads/2022/10/2023-Nissan-Versa-sedan-debut-20.jpg?fit=around%7C875:492.1875",
       },
       {
         id: 304,
@@ -549,6 +575,8 @@ export const car_categories = [
           transmission: "Automatic",
           seating_capacity: 5,
         },
+        image_url:
+          "https://stimg.cardekho.com/car-images/carexteriorimages/large/Ford/Ford-Fiesta/side-view-(left)-090.jpg?tr=w-456",
       },
       {
         id: 305,
@@ -563,6 +591,8 @@ export const car_categories = [
           transmission: "Automatic",
           seating_capacity: 4,
         },
+        image_url:
+          "https://www.motortrend.com/uploads/sites/10/2020/12/2021-chevrolet-spark-ls-5door-hatchback-angular-front.png?fit=around%7C875:492.1875",
       },
       {
         id: 306,
@@ -577,6 +607,8 @@ export const car_categories = [
           transmission: "Automatic",
           seating_capacity: 5,
         },
+        image_url:
+          "https://www.motortrend.com/uploads/sites/11/2016/09/2017-Hyundai-I30-European-Spec-front-side-1.jpg?fit=around%7C875:492",
       },
       {
         id: 307,
@@ -591,6 +623,8 @@ export const car_categories = [
           transmission: "Automatic",
           seating_capacity: 5,
         },
+        image_url:
+          "https://www.motortrend.com/uploads/2021/11/2022-Kia-Rio-77.jpg?fit=around%7C875:492.1875",
       },
       {
         id: 308,
@@ -605,6 +639,8 @@ export const car_categories = [
           transmission: "Automatic",
           seating_capacity: 5,
         },
+        image_url:
+          "https://www.motortrend.com/uploads/sites/11/2014/11/Mazda2-sedan-front-side-view-in-motion-city.jpg?fit=around%7C875:492",
       },
       {
         id: 309,
@@ -619,6 +655,8 @@ export const car_categories = [
           transmission: "Automatic",
           seating_capacity: 5,
         },
+        image_url:
+          "https://www.motortrend.com/uploads/sites/5/2021/06/2021-volkswagen-golf-exterior-01.jpg?fit=around%7C875:492.1875",
       },
       {
         id: 310,
@@ -633,6 +671,8 @@ export const car_categories = [
           transmission: "CVT",
           seating_capacity: 5,
         },
+        image_url:
+          "https://www.motortrend.com/uploads/2021/12/2022-Subaru-Impreza.jpg?fit=around%7C875:492.1875",
       },
     ],
   },
@@ -653,6 +693,8 @@ export const car_categories = [
           transmission: "Manual",
           seating_capacity: 2,
         },
+        image_url:
+          "https://www.motortrend.com/uploads/2022/11/2023-Mazda-MX-5-RF-Club-front-three-quarter-view-25.jpg?fit=around%7C875:492.1875",
       },
       {
         id: 402,
@@ -667,6 +709,8 @@ export const car_categories = [
           transmission: "Automatic",
           seating_capacity: 4,
         },
+        image_url:
+          "https://www.motortrend.com/uploads/2021/10/2022-Ford-Mustang-GT-California-Special_02-1.jpg?fit=around%7C875:492.1875",
       },
       {
         id: 403,
@@ -681,6 +725,8 @@ export const car_categories = [
           transmission: "Automatic",
           seating_capacity: 4,
         },
+        image_url:
+          "https://www.motortrend.com/uploads/sites/5/2021/08/2022-Chevrolet-Camaro-RS-31.jpg?fit=around%7C875:492.1875",
       },
       {
         id: 404,
@@ -695,6 +741,8 @@ export const car_categories = [
           transmission: "Automatic",
           seating_capacity: 2,
         },
+        image_url:
+          "https://www.motortrend.com/uploads/sites/5/2021/08/2022-BMW-Z4-m40i-350.jpg?fit=around%7C875:492.1875",
       },
       {
         id: 405,
@@ -709,6 +757,24 @@ export const car_categories = [
           transmission: "Automatic",
           seating_capacity: 4,
         },
+        image_url:
+          "https://www.motortrend.com/uploads/sites/5/2013/09/2014-Porsche-911-Turbo-S-Cabriolet-front-three-quarter-in-motion-032.jpg?fit=around%7C875:492",
+      },
+      {
+        id: 406,
+        make: "Audi",
+        model: "A3 Cabriolet",
+        year: 2022,
+        price_per_day: 110,
+        location: "Madhapur",
+        available: true,
+        specifications: {
+          engine: "2.0L Turbocharged Inline-4",
+          transmission: "Automatic",
+          seating_capacity: 4,
+        },
+        image_url:
+          "https://www.motortrend.com/uploads/2021/10/2022-Audi-A3-49.jpg?fit=around%7C875:492",
       },
     ],
   },
@@ -729,6 +795,8 @@ export const car_categories = [
           transmission: "Automatic",
           seating_capacity: 5,
         },
+        image_url:
+          "https://www.motortrend.com/uploads/sites/5/2021/08/2022-Mercedes-Benz-S-500-S-580-4Matic-28.jpg?fit=around%7C875:492.1875",
       },
       {
         id: 502,
@@ -743,6 +811,8 @@ export const car_categories = [
           transmission: "Automatic",
           seating_capacity: 5,
         },
+        image_url:
+          "https://www.motortrend.com/uploads/sites/5/2021/04/2021-bmw-7series-exterior-01.jpg?fit=around%7C875:492.1875",
       },
       {
         id: 503,
@@ -757,6 +827,8 @@ export const car_categories = [
           transmission: "Automatic",
           seating_capacity: 5,
         },
+        image_url:
+          "https://www.motortrend.com/uploads/2022/07/2023-Audi-A8-42-front-three-quarter-view.jpg?fit=around%7C875:492.1875",
       },
       {
         id: 504,
@@ -771,6 +843,8 @@ export const car_categories = [
           transmission: "Automatic",
           seating_capacity: 5,
         },
+        image_url:
+          "https://www.motortrend.com/uploads/2022/02/2022-Lexus-LS-500-RWD-1.jpg?fit=around%7C875:492.1875",
       },
       {
         id: 505,
@@ -785,6 +859,24 @@ export const car_categories = [
           transmission: "Automatic",
           seating_capacity: 5,
         },
+        image_url:
+          "https://www.motortrend.com/uploads/sites/11/2020/11/1990-Jaguar-XJ-V-12-front-three-quarter-1.jpg?fit=around%7C875:492",
+      },
+      {
+        id: 506,
+        make: "Tesla",
+        model: "Model S",
+        year: 2022,
+        price_per_day: 280,
+        location: "Madhapur",
+        available: true,
+        specifications: {
+          engine: "Electric",
+          transmission: "Automatic",
+          seating_capacity: 5,
+        },
+        image_url:
+          "https://www.motortrend.com/uploads/2022/11/2023-Tesla-Model-S-Plaid-Offsite-38.jpg?fit=around%7C875:492.1875",
       },
     ],
   },
@@ -805,6 +897,8 @@ export const car_categories = [
           transmission: "Automatic",
           seating_capacity: 2,
         },
+        image_url:
+          "https://www.motortrend.com/uploads/sites/5/2021/06/2022-Porsche-911-GT3-Touring-17.jpg?fit=around%7C875:492",
       },
       {
         id: 602,
@@ -819,6 +913,8 @@ export const car_categories = [
           transmission: "Automatic",
           seating_capacity: 2,
         },
+        image_url:
+          "https://www.motortrend.com/uploads/sites/5/2015/03/2016-Ferrari-488-gtb-front-three-quarters1.jpg?fit=around%7C875:492",
       },
       {
         id: 603,
@@ -833,6 +929,8 @@ export const car_categories = [
           transmission: "Automatic",
           seating_capacity: 2,
         },
+        image_url:
+          "https://www.motortrend.com/uploads/2023/01/2023-Lamborghini-Huracan-Tecnica-6.jpg?fit=around%7C875:492.1875",
       },
       {
         id: 604,
@@ -847,6 +945,8 @@ export const car_categories = [
           transmission: "Automatic",
           seating_capacity: 2,
         },
+        image_url:
+          "https://www.motortrend.com/uploads/2023/02/2023-McLaren-720S-Spider-13.jpg?fit=around%7C875:492.1875",
       },
       {
         id: 605,
@@ -861,6 +961,24 @@ export const car_categories = [
           transmission: "Automatic",
           seating_capacity: 2,
         },
+        image_url:
+          "https://www.motortrend.com/uploads/sites/5/2021/09/2022-Aston-Martin-DB11-front-side-01.jpg?fit=around%7C875:492.1875",
+      },
+      {
+        id: 606,
+        make: "Nissan",
+        model: "GT-R",
+        year: 2022,
+        price_per_day: 320,
+        location: "Madhapur",
+        available: true,
+        specifications: {
+          engine: "3.8L Twin-Turbo V6",
+          transmission: "Automatic",
+          seating_capacity: 2,
+        },
+        image_url:
+          "https://www.motortrend.com/uploads/2023/06/2024-Nissan-GT-R-NISMO-front-view-25.jpg?fit=around%7C875:492.1875x",
       },
     ],
   },
@@ -938,6 +1056,20 @@ export const car_categories = [
           seating_capacity: 4,
         },
       },
+      {
+        id: 706,
+        make: "Hyundai",
+        model: "Kona Electric",
+        year: 2022,
+        price_per_day: 155,
+        location: "Madhapur",
+        available: true,
+        specifications: {
+          engine: "Electric",
+          transmission: "Automatic",
+          seating_capacity: 5,
+        },
+      },
     ],
   },
   {
@@ -1012,6 +1144,20 @@ export const car_categories = [
           engine: "2.0L Inline-4",
           transmission: "Automatic",
           seating_capacity: 5,
+        },
+      },
+      {
+        id: 806,
+        make: "Dodge",
+        model: "Grand Caravan",
+        year: 2022,
+        price_per_day: 115,
+        location: "Madhapur",
+        available: true,
+        specifications: {
+          engine: "3.6L V6",
+          transmission: "Automatic",
+          seating_capacity: 7,
         },
       },
     ],

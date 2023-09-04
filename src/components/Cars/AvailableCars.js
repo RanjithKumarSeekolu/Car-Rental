@@ -1,13 +1,37 @@
 import React, { useState, useEffect } from "react";
-import { car_categories } from "../../utils/Cars.js";
 import location from "../../assets/location.gif";
+import { Link } from "react-router-dom";
 
 const AvailableCars = () => {
-  const [cars, setCars] = useState(car_categories);
+  const [cars, setCars] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(1);
   const [visibleCategories, setVisibleCategories] = useState(1);
   const [showCategoryCarsId, setShowCategoryCarsId] = useState(1);
   const [buttonClick, setButtonClick] = useState("");
+  const [loading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const getCars = async () => {
+      try {
+        setIsLoading(true);
+        const response = await fetch(
+          "http://localhost:4000/cars/getCars?limit=6"
+        );
+        if (response.ok) {
+          const data = await response.json();
+          setCars(data);
+          setIsLoading(false);
+        } else {
+          alert("Something went wrong");
+        }
+      } catch (error) {
+        alert("Error: " + error);
+      }
+    };
+    getCars();
+  }, []);
+
+  console.log("cars ", cars);
 
   const categoriesPerPage = {
     small: 1,
@@ -65,122 +89,128 @@ const AvailableCars = () => {
       setShowCategoryCarsId(visibleCategoryIds[0]);
     }
   }, [visibleCategoryIds]);
-  console.log("selected", selectedCategory);
-  console.log("show", showCategoryCarsId);
-  console.log("visible categories", visibleCategoryIds);
 
   return (
-    <div className="flex flex-col py-10">
-      <div className="text-blue-800 text-2xl font-semibold text-center">
-        Collection
-      </div>
-      <div className="font-bold text-4xl text-center">Our Collection Cars</div>
-      <div className="flex items-center justify-center space-x-12 mx-[5%]">
-        <img
-          width="30"
-          height="30"
-          src="https://img.icons8.com/ios-filled/50/left-squared--v1.png"
-          alt="left-squared--v1"
-          onClick={handlePrevClick}
-          className="relative top-4 cursor-pointer"
-        />
-        <div className="flex flex-1 justify-around border-b border-gray-300 text-gray-400 text-md">
-          {visibleCategoryIds.map((categoryId) => {
-            const category = cars.find((car) => car.id === categoryId);
-            return (
-              <div
-                key={category.id}
-                className={`w-full text-center cursor-pointer ${
-                  categoryId === showCategoryCarsId
-                    ? "border-b-2 border-black text-black transition ease-in-out duration-300"
-                    : ""
-                }`}
-                onClick={() => handleCategoryClick(categoryId)}
-              >
-                <span className="text-6xl relative top-3">&middot;</span>
-                {" " + category.name}
-              </div>
-            );
+    !loading && (
+      <div className="flex flex-col py-10">
+        <div className="text-blue-800 text-2xl font-semibold text-center">
+          Collection
+        </div>
+        <div className="font-bold text-4xl text-center">
+          Our Collection Cars
+        </div>
+        <div className="flex items-center justify-center space-x-12 mx-[5%]">
+          <img
+            width="30"
+            height="30"
+            src="https://img.icons8.com/ios-filled/50/left-squared--v1.png"
+            alt="left-squared--v1"
+            onClick={handlePrevClick}
+            className="relative top-4 cursor-pointer"
+          />
+          <div className="flex flex-1 justify-around border-b border-gray-300 text-gray-400 text-md">
+            {visibleCategoryIds.map((categoryId) => {
+              const category = cars.find((car) => car.id === categoryId);
+              return (
+                <div
+                  key={category.id}
+                  className={`w-full text-center cursor-pointer ${
+                    categoryId === showCategoryCarsId
+                      ? "border-b-2 border-black text-black transition ease-in-out duration-300"
+                      : ""
+                  }`}
+                  onClick={() => handleCategoryClick(categoryId)}
+                >
+                  <span className="text-6xl relative top-3">&middot;</span>
+                  {" " + category?.name}
+                </div>
+              );
+            })}
+          </div>
+          <img
+            width="30"
+            height="30"
+            src="https://img.icons8.com/ios-filled/50/right-squared--v1.png"
+            alt="right-squared--v1"
+            className="relative top-4 cursor-pointer"
+            onClick={handleNextClick}
+          />
+        </div>
+        <div className="px-[5%]">
+          {cars.map((car_category, category_index) => {
+            if (car_category.id === showCategoryCarsId) {
+              return (
+                <div key={car_category.id} className="flex flex-wrap">
+                  {car_category.cars.slice(0, 6).map((car, car_index) => {
+                    return (
+                      <div
+                        key={car.id}
+                        className="flex flex-col flex-grow box-border px-10 py-10 w-[350px]"
+                      >
+                        <div>
+                          <img
+                            className="h-[160px]"
+                            src={car.image_url}
+                            alt="car img"
+                          />
+                        </div>
+                        <div className="flex justify-between">
+                          <div className="flex items-start">
+                            <img
+                              className="center"
+                              width="30"
+                              height="30"
+                              src="https://img.icons8.com/color/48/rupee--v1.png"
+                              alt="rupee--v1"
+                            />
+                            <span className="font-bold text-lg">
+                              {car.price_per_day}
+                            </span>
+                            <span className="text-gray-400"> /days</span>
+                          </div>
+                          <div className="flex items-center">
+                            <span className="w-[20px] h-[20px]">
+                              <img src={location} alt="location" />
+                            </span>
+                            <span className="text-gray-400">
+                              {car.location}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="font-bold text-lg py-2">
+                          {"  " + car.make + " "}
+                          {car.model + " "}
+                          {car.year}
+                        </div>
+                        <div
+                          className={`flex items-center justify-center rounded-sm text-center p-2 ${
+                            car_index == 0
+                              ? "bg-blue-600 text-white"
+                              : "bg-gray-200 hover:bg-blue-600 hover:text-white"
+                          } `}
+                        >
+                          {car_index == 0 && <span>&#x1F4DE;</span>}
+                          <span> Book Now</span>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              );
+            }
+            return null;
           })}
         </div>
-        <img
-          width="30"
-          height="30"
-          src="https://img.icons8.com/ios-filled/50/right-squared--v1.png"
-          alt="right-squared--v1"
-          className="relative top-4 cursor-pointer"
-          onClick={handleNextClick}
-        />
+
+        <div className="text-center">
+          <Link to="/allCars">
+            <button className="bg-blue-600 text-white my-5 p-2 px-4 rounded-sm font-medium">
+              See all cars...
+            </button>
+          </Link>
+        </div>
       </div>
-      <div className="px-[5%]">
-        {cars.map((car_category, category_index) => {
-          if (car_category.id === showCategoryCarsId) {
-            return (
-              <div key={car_category.id} className="flex flex-wrap">
-                {car_category.cars.slice(0, 6).map((car, car_index) => {
-                  return (
-                    <div
-                      key={car.id}
-                      className="flex flex-col flex-grow box-border px-10 py-10 w-[350px]"
-                    >
-                      <div>
-                        <img
-                          className="h-[160px]"
-                          src={car.image_url}
-                          alt="car img"
-                        />
-                      </div>
-                      <div className="flex justify-between">
-                        <div className="flex items-start">
-                          <img
-                            className="center"
-                            width="30"
-                            height="30"
-                            src="https://img.icons8.com/color/48/rupee--v1.png"
-                            alt="rupee--v1"
-                          />
-                          <span className="font-bold text-lg">
-                            {car.price_per_day}
-                          </span>
-                          <span className="text-gray-400"> /days</span>
-                        </div>
-                        <div className="flex items-center">
-                          <span className="w-[20px] h-[20px]">
-                            <img src={location} alt="location" />
-                          </span>
-                          <span className="text-gray-400">{car.location}</span>
-                        </div>
-                      </div>
-                      <div className="font-bold text-lg py-2">
-                        {"  " + car.make + " "}
-                        {car.model + " "}
-                        {car.year}
-                      </div>
-                      <div
-                        className={`flex items-center justify-center rounded-sm text-center p-2 ${
-                          car_index == 0
-                            ? "bg-blue-600 text-white"
-                            : "bg-gray-200 hover:bg-blue-600 hover:text-white"
-                        } `}
-                      >
-                        {car_index == 0 && <span>&#x1F4DE;</span>}
-                        <span> Book Now</span>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            );
-          }
-          return null;
-        })}
-      </div>
-      <div className="text-center">
-        <button className="bg-blue-600 text-white my-5 p-2 px-4 rounded-sm font-medium">
-          See all cars...
-        </button>
-      </div>
-    </div>
+    )
   );
 };
 
