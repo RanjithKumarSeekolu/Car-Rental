@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "car-rental-3a89c",
+  "private_key_id": "42ec336085046aa6f2bd5f0dc163c4b8b2a55ce5",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC5l/HGEJULDWFr\nsHbP9pRgmHWgSoHCGbtyMZ4vW23qhJC9poPggzScEqLxQ9X6ZSHCgKRtMTs++1BT\ngx3IuPnsCC5zdzi7YgbMEakLA48FYU1SJ38Y3iBSebMc8AhmDTk45hCHIQ/lan0L\nEV68p0rb0/EFoZC6T3AIpQgFEQbFRZufNKnJwV2h341JhAgxc3dhd5ghzJUNk/QN\nNTExdR61rZcxM5sXfDvw23f7kGCuhwwb24RivDCTMOUNVY8gkbE3Ifs0UhfoBSob\npmeoxqL+C47q7GfzhwzV0Jt4pQuDMqPPrJKOs2n0M6IPyI6EGMw9fD1uNGMA3bRR\n1FGTP/UFAgMBAAECggEAOKNGBUvKMDVFJbgUiiKV5WShgOk78CAqNA8wVwNv58HM\n6hOG610fEQIe98Hb6y4xv0nC5A/CJNZNDS9WR4srufxFMLeReJ3RtTUugU30t4+a\nKRgkkVI4SvMY1hvqdDpU3ChZouNUFo8I2ffTEX98ONnVFALaSAE2D21NpT4s8sZl\nyfV1O+z6bi9Owb9rrvWbtl7xc+s4JXoMvVTnbp+rGro7too1OKBisLYqxmHE0IN0\ntPWDOC9nE4K6Egl5JfNy0T6XiK1Cvli07ZkCGKDZP1P2CRx/ib/zPW8gQE4LO9cz\nchntPuxy0qN0utjQ+YICdK68QYqFSCIcspLkkbT5gQKBgQDt+xn4ITz3TUhImond\nwaz+N3yJina0z89KfvE2Zn1JfJ/U9Jm4tCh1YOjFgU3GLBevL+xo3e7MhJc33QnR\nRoAzwW1geWBNZFC5zss4x+H57WE8sK1anaeD12C+eIl6pL5JfbkeKz2Yo3A4Rv+g\nKEqO41HRciwJ/ShhoQx3tNtHHwKBgQDHpWTXh0+vTRfr/dk50T5ZeLE6liY1OXB2\nDnMFzpBIzUK4MQ54Q+vME+4/1XC+utqcgbeAg76nmo7aY3NUYx+CUJ5fp6HF3DyW\nuM/sTCuztmJeJLW5snMHmAG15BJoMSmcJYsD1wxSwsGuNZCqIWZAv4bGTDo7SNYH\neA5qZg2zWwKBgQCKp8qxr2v+CqEa7C93bOiGFX4SBQK0xn9YQC36LCzDLEFTqlAG\nNbF88kGtEXFnDTmfcKSlVOlVb8tLWRXnQNRhU0mO9CkP7mq6V6pAIvWe0Jfe7HGU\nYla/kjVjxIcVVfcoin/Y/Aifblpr77Hwdok6R2fcSFEwYLeuak8BT/aSsQKBgHtu\n960FnK+ug3bFqLNFej4JD9JAGPlZPP3Qqy7Q6oYIWhLVSbPzkmrHe8r9pMpXbmfL\nD3AmhA7N0TqWuCxZaJbCT1impK9XHiK1ut/GrFJdFe5M1gosmU/9nDkf/H1sv+Qp\nlgxWvejBPsv9lCaLpdOsVqBtaqdSvfk6Mfd4h0n3AoGBANN9w8HfMpGMnDhkgvIZ\niz2oXqq5uVi+to7LKWJeoPQeQAghpSYAOZJ0caUI3mOKWaTmMrKNJRUua7iFDkf5\nKx6U7FAn0znHZHWpQTs514H+0mTOjU0vPL5dL9cn4hm6SvSiIMqAvV8HMsXTD9Jm\nCekKmfT/FYdq/unhnqxlkWyd\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-q7qbx@car-rental-3a89c.iam.gserviceaccount.com",
+  "client_id": "111615638385320785890",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-q7qbx%40car-rental-3a89c.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

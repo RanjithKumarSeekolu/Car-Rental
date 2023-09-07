@@ -9,6 +9,9 @@ import Booking from "./components/Booking/Booking";
 import { createBrowserRouter, Outlet } from "react-router-dom";
 import AllCars from "./components/Cars/AllCars";
 import CarHost from "./components/CarHost/CarHost";
+import CategoryCars from "./components/Cars/CategoryCars";
+import path from "path-browserify";
+import MapContainer from "./components/Maps/MapContainer";
 
 const App = () => {
   return (
@@ -38,7 +41,7 @@ export const appRouter = createBrowserRouter([
     element: <App />,
     children: [
       {
-        index: "/", // Use 'index' to match the root path
+        index: "/",
         element: <Body />,
       },
       {
@@ -48,6 +51,14 @@ export const appRouter = createBrowserRouter([
       {
         path: "/carHost",
         element: <CarHost />,
+      },
+      {
+        path: "/allCars/:id",
+        element: <CategoryCars />,
+      },
+      {
+        path: "/maps",
+        element: <MapContainer />,
       },
     ],
   },

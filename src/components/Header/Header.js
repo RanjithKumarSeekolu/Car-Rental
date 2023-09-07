@@ -16,7 +16,9 @@ const Header = () => {
         </Link>
         <div className="md:flex items-center justify-between hidden space-x-5">
           <div className="hover:text-blue-800 cursor-pointer">About</div>
-          <div className="hover:text-blue-800 cursor-pointer">Features</div>
+          <Link to="/allCars">
+            <div className="hover:text-blue-800 cursor-pointer">Cars</div>
+          </Link>
           <div className="hover:text-blue-800 cursor-pointer">Pricing</div>
           <div className="hover:text-blue-800 cursor-pointer">Resources</div>
           <div className="hover:text-blue-800 cursor-pointer">Contact</div>
