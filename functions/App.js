@@ -1,8 +1,7 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-// const car_categories = require("./Cars.js");
-// console.log(car_categories);
+// const { locations, car_categories } = require("./Cars");
 
 //firebase
 const admin = require("firebase-admin");
@@ -70,6 +69,34 @@ app.get("/cars/getCategoryCars/:id", async (req, res) => {
     res.status(400).json({ status: -1, error: err });
   }
 });
+
+app.get("/locations/getLocations", async (req, res) => {
+  try {
+    const collection = await db.collection("locations");
+    const snapshot = await collection.get();
+    const locations = [];
+    snapshot.forEach((doc) => {
+      locations.push(doc.data());
+    });
+    res.json(locations);
+  } catch (err) {
+    res.status(400).json({ status: -1, error: err });
+  }
+});
+
+// const importData = async () => {
+//   try {
+//     const collection = await db.collection("locations");
+//     for (const location of locations) {
+//       const docId = location.name;
+//       await collection.doc(docId).set(location);
+//     }
+//     console.log("datasent scucc");
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
+// importData();
 
 // const importData = async () => {
 //   try {

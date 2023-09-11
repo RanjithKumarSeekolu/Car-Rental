@@ -1,12 +1,28 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
+import { GOOGLE_MAPS_API_KEY } from "../../../.google_maps_credentials";
+import { getLocations } from "../services/locations.services";
 
 const MapContainer = (props) => {
-  const [carRentalLocations, setCarRentalLocations] = useState([
-    { name: "Location 1", lat: 17.405044, lng: 78.486671 },
-    { name: "Location 2", lat: 17.395044, lng: 78.476671 },
-    // Add more car rental locations here
-  ]);
+  const [carRentalLocations, setCarRentalLocations] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const response = await getLocations();
+
+        setCarRentalLocations(response);
+        console.log("locations", carRentalLocations);
+        setLoading(false);
+      } catch (err) {
+        console.log(err);
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
 
   const center = useMemo(() => ({ lat: 17.385044, lng: 78.486671 }), []);
 
@@ -55,24 +71,26 @@ const MapContainer = (props) => {
   // }, [props.google.maps.Geocoder]); // This useEffect runs when the component mounts
 
   return (
-    <div>
-      <Map
-        google={props.google}
-        zoom={14}
-        initialCenter={center} // Center the map on Hyderabad
-      >
-        {carRentalLocations.map((location, index) => (
-          <Marker
-            key={index}
-            title={location.name}
-            position={{ lat: location.lat, lng: location.lng }}
-          />
-        ))}
-      </Map>
-    </div>
+    !loading && (
+      <div>
+        <Map
+          google={props.google}
+          zoom={6}
+          initialCenter={center} // Center the map on Hyderabad
+        >
+          {carRentalLocations.map((location, index) => (
+            <Marker
+              key={index}
+              title={location.name}
+              position={{ lat: location.lat, lng: location.lng }}
+            />
+          ))}
+        </Map>
+      </div>
+    )
   );
 };
 
 export default GoogleApiWrapper({
-  apiKey: process.env.GOOGLE_MAPS_API_KEY, // Replace with your API key
+  apiKey: GOOGLE_MAPS_API_KEY,
 })(MapContainer);

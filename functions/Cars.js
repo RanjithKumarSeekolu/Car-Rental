@@ -1,14 +1,34 @@
 const locations = [
-  "Banjara Hills",
-  "Jubilee Hills",
-  "Hitech City",
-  "Gachibowli",
-  "Secunderabad",
-  "Kukatpally",
-  "Madhapur",
-  "Ameerpet",
-  "Begumpet",
-  "Shamshabad",
+  { name: "Banjara Hills, Hyderabad", lat: 17.415432, lng: 78.434799 },
+  { name: "Jubilee Hills, Hyderabad", lat: 17.421306, lng: 78.434202 },
+  { name: "Hitech City, Hyderabad", lat: 17.441136, lng: 78.393282 },
+  { name: "Secunderabad, Hyderabad", lat: 17.433489, lng: 78.500862 },
+  // Visakhapatnam
+  {
+    name: "Visakhapatnam International Airport, Visakhapatnam",
+    lat: 17.721476,
+    lng: 83.226425,
+  },
+  { name: "Rushikonda Beach, Visakhapatnam", lat: 17.743201, lng: 83.3438 },
+  { name: "Kailasagiri, Visakhapatnam", lat: 17.722949, lng: 83.328109 },
+  // Bengaluru
+  {
+    name: "Kempegowda International Airport, Bengaluru",
+    lat: 13.198635,
+    lng: 77.706592,
+  },
+  { name: "Cubbon Park, Bengaluru", lat: 12.977442, lng: 77.59525 },
+  {
+    name: "Lalbagh Botanical Garden, Bengaluru",
+    lat: 12.949748,
+    lng: 77.583055,
+  },
+  // Kakinada
+  { name: "madhurapudi airport", lat: 17.005229, lng: 81.784309 },
+  { name: "Bhanugudi, Kakinada", lat: 16.965915, lng: 82.238838 },
+  // Vijayawada
+  { name: "Vijayawada Airport", lat: 16.529742, lng: 80.796649 },
+  { name: "Bhavani Island, Vijayawada", lat: 16.500458, lng: 80.704342 },
 ];
 
 const car_categories = [
@@ -1185,4 +1205,4 @@ const car_categories = [
   },
 ];
 
-module.exports = car_categories;
+module.exports = { car_categories, locations };
