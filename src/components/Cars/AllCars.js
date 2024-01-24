@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import apiUrl from "../../utils/constants.js";
+import apiUrl from "../../utils/Constants.js";
 
 const AllCars = () => {
   const [cars, setCars] = useState([]);
