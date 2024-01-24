@@ -1,16 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { signInWithPopup } from "firebase/auth";
+import { auth, provider } from "../../../init-firebase";
+import UserMenu from "../UserModal/UserMenu";
 
 const Header = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
+  const [user, setUser] = useState({});
+  const [showModal, setShowModal] = useState(false);
 
   const toggleDrawer = () => {
     setOpenDrawer(!openDrawer);
   };
 
+  const googleLoginHandler = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        setUser(result.user);
+      })
+      .catch((error) => console.log(error.message));
+  };
+
+  useEffect(() => {
+    if (user) {
+      console.log("window tracker");
+    }
+  }, [user]);
+
   return (
     <>
-      <div className="flex justify-between items-center shadow-md px-[6%] py-5 fixed w-full z-20 bg-white font-bold">
+      <div className="flex justify-between items-center  px-[6%] py-5 fixed w-full z-20 bg-white font-bold">
         <Link to="/">
           <div>Logo</div>
         </Link>
@@ -19,13 +38,41 @@ const Header = () => {
           <Link to="/allCars">
             <div className="hover:text-blue-800 cursor-pointer">Cars</div>
           </Link>
-          <div className="hover:text-blue-800 cursor-pointer">Pricing</div>
-          <div className="hover:text-blue-800 cursor-pointer">Resources</div>
+          <Link to="/maps">
+            <div className="hover:text-blue-800 cursor-pointer">Locations</div>
+          </Link>
+          <div className="hover:text-blue-800 cursor-pointer">Dashboard</div>
           <div className="hover:text-blue-800 cursor-pointer">Contact</div>
         </div>
-        <button className="md:flex hidden px-8 py-2 bg-indigo-800 rounded-md cursor-pointer text-white font-semibold shadow-md hover:bg-blue-700 hover:text-white transition-all duration-300">
-          Sign In
-        </button>
+        {!user ||
+          (Object.keys(user).length === 0 && (
+            <button
+              onClick={googleLoginHandler}
+              className="md:flex hidden px-8 py-2 bg-indigo-800 rounded-md cursor-pointer text-white font-semibold shadow-md hover:bg-blue-700 hover:text-white transition-all duration-300"
+            >
+              Sign In
+            </button>
+          ))}
+        {user && Object.keys(user).length !== 0 && (
+          <div className=" flex flex-col items-end">
+            <img
+              src={user.photoURL}
+              alt="avatar"
+              className="h-10 w-10 cursor-pointer rounded-full border border-indigo-800"
+              onClick={() => setShowModal((prev) => !prev)}
+            />
+
+            {showModal && (
+              <UserMenu
+                closeModal={() => setShowModal(false)}
+                logoutHandler={() => {
+                  setUser({});
+                  setShowModal(false); // Close the menu when logging out
+                }}
+              />
+            )}
+          </div>
+        )}
         <div className="md:hidden">
           <div onClick={toggleDrawer}>
             {openDrawer ? <>&#10005;</> : <>&#8801;</>}

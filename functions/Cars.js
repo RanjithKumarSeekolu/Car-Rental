@@ -37,7 +37,6 @@ const car_categories = [
     name: "SUV",
     image_url:
       "https://imgd.aeplcdn.com/1920x1080/n/cw/ec/44709/fortuner-exterior-right-front-three-quarter-19.jpeg?q=75&q=75",
-
     cars: [
       {
         id: 101,
@@ -45,7 +44,11 @@ const car_categories = [
         model: "Fortuner",
         year: 2022,
         price_per_day: 90,
-        location: "Banjara Hills",
+        location: {
+          name: "Banjara Hills, Hyderabad",
+          lat: 17.415432,
+          lng: 78.434799,
+        },
         available: true,
         specifications: {
           engine: "3.0L V6",
@@ -61,7 +64,11 @@ const car_categories = [
         model: "Endeavour",
         year: 2022,
         price_per_day: 85,
-        location: "Jubilee Hills",
+        location: {
+          name: "Jubilee Hills, Hyderabad",
+          lat: 17.421306,
+          lng: 78.434202,
+        },
         available: true,
         specifications: {
           engine: "2.0L EcoBlue",
@@ -77,7 +84,11 @@ const car_categories = [
         model: "Pathfinder",
         year: 2022,
         price_per_day: 80,
-        location: "Hitech City",
+        location: {
+          name: "Hitech City, Hyderabad",
+          lat: 17.441136,
+          lng: 78.393282,
+        },
         available: true,
         specifications: {
           engine: "3.5L V6",
@@ -93,7 +104,11 @@ const car_categories = [
         model: "Traverse",
         year: 2022,
         price_per_day: 75,
-        location: "Gachibowli",
+        location: {
+          name: "Gachibowli, Hyderabad",
+          lat: 17.433489,
+          lng: 78.500862,
+        },
         available: true,
         specifications: {
           engine: "3.6L V6",
@@ -109,7 +124,11 @@ const car_categories = [
         model: "Pilot",
         year: 2022,
         price_per_day: 88,
-        location: "Madhapur",
+        location: {
+          name: "Madhapur, Hyderabad",
+          lat: 17.415432,
+          lng: 78.434799,
+        },
         available: true,
         specifications: {
           engine: "3.5L V6",
@@ -125,7 +144,11 @@ const car_categories = [
         model: "Santa Fe",
         year: 2022,
         price_per_day: 82,
-        location: "Kukatpally",
+        location: {
+          name: "Kukatpally, Hyderabad",
+          lat: 17.415432,
+          lng: 78.434799,
+        },
         available: true,
         specifications: {
           engine: "2.5L Inline-4",
@@ -141,7 +164,11 @@ const car_categories = [
         model: "Grand Cherokee",
         year: 2022,
         price_per_day: 95,
-        location: "Begumpet",
+        location: {
+          name: "Begumpet, Hyderabad",
+          lat: 17.415432,
+          lng: 78.434799,
+        },
         available: true,
         specifications: {
           engine: "3.6L V6",
@@ -157,7 +184,11 @@ const car_categories = [
         model: "Outlander",
         year: 2022,
         price_per_day: 78,
-        location: "Secunderabad",
+        location: {
+          name: "Secunderabad, Hyderabad",
+          lat: 17.415432,
+          lng: 78.434799,
+        },
         available: true,
         specifications: {
           engine: "2.4L Inline-4",
@@ -173,7 +204,11 @@ const car_categories = [
         model: "Ascent",
         year: 2022,
         price_per_day: 86,
-        location: "Ameerpet",
+        location: {
+          name: "Ameerpet, Hyderabad",
+          lat: 17.415432,
+          lng: 78.434799,
+        },
         available: true,
         specifications: {
           engine: "2.4L Turbocharged Boxer-4",
@@ -189,7 +224,11 @@ const car_categories = [
         model: "Telluride",
         year: 2022,
         price_per_day: 92,
-        location: "Uppal",
+        location: {
+          name: "Uppal, Hyderabad",
+          lat: 17.415432,
+          lng: 78.434799,
+        },
         available: true,
         specifications: {
           engine: "3.8L V6",
@@ -205,7 +244,11 @@ const car_categories = [
         model: "Acadia",
         year: 2022,
         price_per_day: 79,
-        location: "L.B. Nagar",
+        location: {
+          name: "L.B. Nagar, Hyderabad",
+          lat: 17.415432,
+          lng: 78.434799,
+        },
         available: true,
         specifications: {
           engine: "2.5L Inline-4",
@@ -221,7 +264,11 @@ const car_categories = [
         model: "Atlas",
         year: 2022,
         price_per_day: 81,
-        location: "Charminar",
+        location: {
+          name: "Charminar, Hyderabad",
+          lat: 17.415432,
+          lng: 78.434799,
+        },
         available: true,
         specifications: {
           engine: "3.6L V6",
@@ -245,7 +292,11 @@ const car_categories = [
         model: "Camry",
         year: 2022,
         price_per_day: 70,
-        location: "Himayat Nagar",
+        location: {
+          name: "Himayat Nagar, Hyderabad",
+          lat: 17.399162,
+          lng: 78.489998,
+        },
         available: true,
         specifications: {
           engine: "2.5L Inline-4",
@@ -261,7 +312,11 @@ const car_categories = [
         model: "Civic",
         year: 2022,
         price_per_day: 65,
-        location: "Koti",
+        location: {
+          name: "Koti, Hyderabad",
+          lat: 17.384886,
+          lng: 78.479025,
+        },
         available: true,
         specifications: {
           engine: "1.5L Turbocharged Inline-4",
@@ -277,7 +332,11 @@ const car_categories = [
         model: "Altima",
         year: 2022,
         price_per_day: 68,
-        location: "Panjagutta",
+        location: {
+          name: "Panjagutta, Hyderabad",
+          lat: 17.427426,
+          lng: 78.462657,
+        },
         available: true,
         specifications: {
           engine: "2.5L Inline-4",
@@ -293,7 +352,11 @@ const car_categories = [
         model: "Fusion",
         year: 2022,
         price_per_day: 63,
-        location: "Secunderabad",
+        location: {
+          name: "Secunderabad, Hyderabad",
+          lat: 17.439929,
+          lng: 78.498274,
+        },
         available: true,
         specifications: {
           engine: "2.0L Inline-4",
@@ -309,7 +372,11 @@ const car_categories = [
         model: "Malibu",
         year: 2022,
         price_per_day: 66,
-        location: "Begumpet",
+        location: {
+          name: "Begumpet, Hyderabad",
+          lat: 17.448665,
+          lng: 78.449493,
+        },
         available: true,
         specifications: {
           engine: "1.5L Turbocharged Inline-4",
@@ -325,7 +392,11 @@ const car_categories = [
         model: "Elantra",
         year: 2022,
         price_per_day: 67,
-        location: "Madhapur",
+        location: {
+          name: "Madhapur, Hyderabad",
+          lat: 17.448765,
+          lng: 78.388443,
+        },
         available: true,
         specifications: {
           engine: "2.0L Inline-4",
@@ -341,7 +412,11 @@ const car_categories = [
         model: "Optima",
         year: 2022,
         price_per_day: 69,
-        location: "Jubilee Hills",
+        location: {
+          name: "Jubilee Hills, Hyderabad",
+          lat: 17.421306,
+          lng: 78.434202,
+        },
         available: true,
         specifications: {
           engine: "2.5L Inline-4",
@@ -357,7 +432,11 @@ const car_categories = [
         model: "Mazda3",
         year: 2022,
         price_per_day: 72,
-        location: "Gachibowli",
+        location: {
+          name: "Gachibowli, Hyderabad",
+          lat: 17.443622,
+          lng: 78.351461,
+        },
         available: true,
         specifications: {
           engine: "2.5L Inline-4",
@@ -371,7 +450,11 @@ const car_categories = [
         model: "Jetta",
         year: 2022,
         price_per_day: 71,
-        location: "Charminar",
+        location: {
+          name: "Charminar, Hyderabad",
+          lat: 17.361622,
+          lng: 78.47473,
+        },
         available: true,
         specifications: {
           engine: "1.4L Turbocharged Inline-4",
@@ -385,7 +468,11 @@ const car_categories = [
         model: "Impreza",
         year: 2022,
         price_per_day: 64,
-        location: "Ameerpet",
+        location: {
+          name: "Ameerpet, Hyderabad",
+          lat: 17.437462,
+          lng: 78.448288,
+        },
         available: true,
         specifications: {
           engine: "2.0L Flat-4",
@@ -399,7 +486,11 @@ const car_categories = [
         model: "C-Class",
         year: 2022,
         price_per_day: 80,
-        location: "Banjara Hills",
+        location: {
+          name: "Banjara Hills, Hyderabad",
+          lat: 17.415432,
+          lng: 78.434799,
+        },
         available: true,
         specifications: {
           engine: "2.0L Turbocharged Inline-4",
@@ -413,7 +504,11 @@ const car_categories = [
         model: "3 Series",
         year: 2022,
         price_per_day: 82,
-        location: "Kukatpally",
+        location: {
+          name: "Kukatpally, Hyderabad",
+          lat: 17.493084,
+          lng: 78.413768,
+        },
         available: true,
         specifications: {
           engine: "2.0L Turbocharged Inline-4",
@@ -427,7 +522,11 @@ const car_categories = [
         model: "A4",
         year: 2022,
         price_per_day: 85,
-        location: "Uppal",
+        location: {
+          name: "Uppal, Hyderabad",
+          lat: 17.396221,
+          lng: 78.559047,
+        },
         available: true,
         specifications: {
           engine: "2.0L Turbocharged Inline-4",
@@ -441,7 +540,11 @@ const car_categories = [
         model: "ES",
         year: 2022,
         price_per_day: 78,
-        location: "Hitech City",
+        location: {
+          name: "Hitech City, Hyderabad",
+          lat: 17.441136,
+          lng: 78.393282,
+        },
         available: true,
         specifications: {
           engine: "2.5L Inline-4",
@@ -455,7 +558,11 @@ const car_categories = [
         model: "Q50",
         year: 2022,
         price_per_day: 76,
-        location: "Jubilee Hills",
+        location: {
+          name: "Jubilee Hills, Hyderabad",
+          lat: 17.421306,
+          lng: 78.434202,
+        },
         available: true,
         specifications: {
           engine: "3.0L Twin-Turbo V6",
@@ -469,7 +576,11 @@ const car_categories = [
         model: "CTS",
         year: 2022,
         price_per_day: 83,
-        location: "Gachibowli",
+        location: {
+          name: "Gachibowli, Hyderabad",
+          lat: 17.443622,
+          lng: 78.351461,
+        },
         available: true,
         specifications: {
           engine: "3.6L V6",
@@ -483,7 +594,11 @@ const car_categories = [
         model: "MKZ",
         year: 2022,
         price_per_day: 77,
-        location: "Madhapur",
+        location: {
+          name: "Madhapur, Hyderabad",
+          lat: 17.448765,
+          lng: 78.388443,
+        },
         available: true,
         specifications: {
           engine: "2.0L Turbocharged Inline-4",
@@ -497,7 +612,11 @@ const car_categories = [
         model: "XE",
         year: 2022,
         price_per_day: 79,
-        location: "Banjara Hills",
+        location: {
+          name: "Banjara Hills, Hyderabad",
+          lat: 17.415432,
+          lng: 78.434799,
+        },
         available: true,
         specifications: {
           engine: "2.0L Turbocharged Inline-4",
@@ -511,7 +630,11 @@ const car_categories = [
         model: "S60",
         year: 2022,
         price_per_day: 74,
-        location: "Koti",
+        location: {
+          name: "Koti, Hyderabad",
+          lat: 17.384886,
+          lng: 78.479025,
+        },
         available: true,
         specifications: {
           engine: "2.0L Turbocharged Inline-4",
@@ -525,7 +648,11 @@ const car_categories = [
         model: "Model 3",
         year: 2022,
         price_per_day: 90,
-        location: "Himayat Nagar",
+        location: {
+          name: "Himayat Nagar, Hyderabad",
+          lat: 17.399162,
+          lng: 78.489998,
+        },
         available: true,
         specifications: {
           engine: "Electric",
@@ -547,7 +674,11 @@ const car_categories = [
         model: "Corolla Hatchback",
         year: 2022,
         price_per_day: 60,
-        location: "Himayat Nagar",
+        location: {
+          name: "Himayat Nagar, Hyderabad",
+          lat: 17.415432,
+          lng: 78.434799,
+        },
         available: true,
         specifications: {
           engine: "2.0L Inline-4",
@@ -563,7 +694,11 @@ const car_categories = [
         model: "Fit",
         year: 2022,
         price_per_day: 55,
-        location: "Koti",
+        location: {
+          name: "Koti, Hyderabad",
+          lat: 17.421306,
+          lng: 78.434202,
+        },
         available: true,
         specifications: {
           engine: "1.5L Inline-4",
@@ -579,7 +714,11 @@ const car_categories = [
         model: "Versa",
         year: 2022,
         price_per_day: 58,
-        location: "Panjagutta",
+        location: {
+          name: "Panjagutta, Hyderabad",
+          lat: 17.433489,
+          lng: 78.500862,
+        },
         available: true,
         specifications: {
           engine: "1.6L Inline-4",
@@ -595,7 +734,11 @@ const car_categories = [
         model: "Fiesta",
         year: 2022,
         price_per_day: 53,
-        location: "Secunderabad",
+        location: {
+          name: "Secunderabad, Hyderabad",
+          lat: 17.433489,
+          lng: 78.500862,
+        },
         available: true,
         specifications: {
           engine: "1.6L Inline-4",
@@ -611,7 +754,11 @@ const car_categories = [
         model: "Spark",
         year: 2022,
         price_per_day: 56,
-        location: "Begumpet",
+        location: {
+          name: "Begumpet, Hyderabad",
+          lat: 17.433489,
+          lng: 78.500862,
+        },
         available: true,
         specifications: {
           engine: "1.4L Inline-4",
@@ -627,7 +774,11 @@ const car_categories = [
         model: "i30",
         year: 2022,
         price_per_day: 57,
-        location: "Madhapur",
+        location: {
+          name: "Madhapur, Hyderabad",
+          lat: 17.433489,
+          lng: 78.500862,
+        },
         available: true,
         specifications: {
           engine: "2.0L Inline-4",
@@ -643,7 +794,11 @@ const car_categories = [
         model: "Rio",
         year: 2022,
         price_per_day: 59,
-        location: "Jubilee Hills",
+        location: {
+          name: "Jubilee Hills, Hyderabad",
+          lat: 17.433489,
+          lng: 78.500862,
+        },
         available: true,
         specifications: {
           engine: "1.6L Inline-4",
@@ -659,7 +814,11 @@ const car_categories = [
         model: "Mazda2",
         year: 2022,
         price_per_day: 62,
-        location: "Gachibowli",
+        location: {
+          name: "Gachibowli, Hyderabad",
+          lat: 17.433489,
+          lng: 78.500862,
+        },
         available: true,
         specifications: {
           engine: "1.5L Inline-4",
@@ -675,7 +834,11 @@ const car_categories = [
         model: "Golf",
         year: 2022,
         price_per_day: 61,
-        location: "Charminar",
+        location: {
+          name: "Charminar, Hyderabad",
+          lat: 17.433489,
+          lng: 78.500862,
+        },
         available: true,
         specifications: {
           engine: "1.4L Turbocharged Inline-4",
@@ -691,7 +854,11 @@ const car_categories = [
         model: "Impreza Hatchback",
         year: 2022,
         price_per_day: 54,
-        location: "Ameerpet",
+        location: {
+          name: "Ameerpet, Hyderabad",
+          lat: 17.433489,
+          lng: 78.500862,
+        },
         available: true,
         specifications: {
           engine: "2.0L Flat-4",
@@ -715,7 +882,11 @@ const car_categories = [
         model: "MX-5 Miata",
         year: 2022,
         price_per_day: 85,
-        location: "Banjara Hills",
+        location: {
+          name: "Banjara Hills, Hyderabad",
+          lat: 17.415432,
+          lng: 78.434799,
+        },
         available: true,
         specifications: {
           engine: "2.0L Inline-4",
@@ -731,7 +902,11 @@ const car_categories = [
         model: "Mustang Convertible",
         year: 2022,
         price_per_day: 95,
-        location: "Jubilee Hills",
+        location: {
+          name: "Jubilee Hills, Hyderabad",
+          lat: 17.421306,
+          lng: 78.434202,
+        },
         available: true,
         specifications: {
           engine: "2.3L EcoBoost Inline-4",
@@ -747,7 +922,11 @@ const car_categories = [
         model: "Camaro Convertible",
         year: 2022,
         price_per_day: 90,
-        location: "Gachibowli",
+        location: {
+          name: "Gachibowli, Hyderabad",
+          lat: 17.441136,
+          lng: 78.393282,
+        },
         available: true,
         specifications: {
           engine: "3.6L V6",
@@ -763,7 +942,11 @@ const car_categories = [
         model: "Z4",
         year: 2022,
         price_per_day: 100,
-        location: "Hitech City",
+        location: {
+          name: "Hitech City, Hyderabad",
+          lat: 17.433489,
+          lng: 78.500862,
+        },
         available: true,
         specifications: {
           engine: "2.0L Turbocharged Inline-4",
@@ -779,7 +962,11 @@ const car_categories = [
         model: "911 Cabriolet",
         year: 2022,
         price_per_day: 150,
-        location: "Begumpet",
+        location: {
+          name: "Begumpet, Hyderabad",
+          lat: 17.433489,
+          lng: 78.500862,
+        },
         available: true,
         specifications: {
           engine: "3.0L Twin-Turbo Flat-6",
@@ -795,7 +982,11 @@ const car_categories = [
         model: "A3 Cabriolet",
         year: 2022,
         price_per_day: 110,
-        location: "Madhapur",
+        location: {
+          name: "Madhapur, Hyderabad",
+          lat: 17.441136,
+          lng: 78.393282,
+        },
         available: true,
         specifications: {
           engine: "2.0L Turbocharged Inline-4",
@@ -819,7 +1010,11 @@ const car_categories = [
         model: "S-Class",
         year: 2022,
         price_per_day: 250,
-        location: "Banjara Hills",
+        location: {
+          name: "Banjara Hills, Hyderabad",
+          lat: 17.415432,
+          lng: 78.434799,
+        },
         available: true,
         specifications: {
           engine: "3.0L Turbocharged Inline-6",
@@ -835,7 +1030,11 @@ const car_categories = [
         model: "7 Series",
         year: 2022,
         price_per_day: 240,
-        location: "Jubilee Hills",
+        location: {
+          name: "Jubilee Hills, Hyderabad",
+          lat: 17.421306,
+          lng: 78.434202,
+        },
         available: true,
         specifications: {
           engine: "3.0L Turbocharged Inline-6",
@@ -851,7 +1050,11 @@ const car_categories = [
         model: "A8",
         year: 2022,
         price_per_day: 230,
-        location: "Gachibowli",
+        location: {
+          name: "Gachibowli, Hyderabad",
+          lat: 17.441136,
+          lng: 78.393282,
+        },
         available: true,
         specifications: {
           engine: "3.0L Turbocharged V6",
@@ -867,7 +1070,11 @@ const car_categories = [
         model: "LS",
         year: 2022,
         price_per_day: 220,
-        location: "Hitech City",
+        location: {
+          name: "Hitech City, Hyderabad",
+          lat: 17.433489,
+          lng: 78.500862,
+        },
         available: true,
         specifications: {
           engine: "3.5L V6 Hybrid",
@@ -883,7 +1090,11 @@ const car_categories = [
         model: "XJ",
         year: 2022,
         price_per_day: 210,
-        location: "Begumpet",
+        location: {
+          name: "Begumpet, Hyderabad",
+          lat: 17.721476,
+          lng: 83.226425,
+        },
         available: true,
         specifications: {
           engine: "3.0L Supercharged V6",
@@ -899,7 +1110,11 @@ const car_categories = [
         model: "Model S",
         year: 2022,
         price_per_day: 280,
-        location: "Madhapur",
+        location: {
+          name: "Madhapur, Hyderabad",
+          lat: 17.721476,
+          lng: 83.226425,
+        },
         available: true,
         specifications: {
           engine: "Electric",
@@ -923,7 +1138,11 @@ const car_categories = [
         model: "911",
         year: 2022,
         price_per_day: 300,
-        location: "Banjara Hills",
+        location: {
+          name: "Banjara Hills, Hyderabad",
+          lat: 17.415432,
+          lng: 78.434799,
+        },
         available: true,
         specifications: {
           engine: "3.0L Twin-Turbo Flat-6",
@@ -939,7 +1158,11 @@ const car_categories = [
         model: "488 GTB",
         year: 2022,
         price_per_day: 500,
-        location: "Jubilee Hills",
+        location: {
+          name: "Jubilee Hills, Hyderabad",
+          lat: 17.421306,
+          lng: 78.434202,
+        },
         available: true,
         specifications: {
           engine: "3.9L Twin-Turbo V8",
@@ -955,7 +1178,11 @@ const car_categories = [
         model: "Huracán",
         year: 2022,
         price_per_day: 550,
-        location: "Gachibowli",
+        location: {
+          name: "Gachibowli, Hyderabad",
+          lat: 17.441136,
+          lng: 78.393282,
+        },
         available: true,
         specifications: {
           engine: "5.2L V10",
@@ -971,7 +1198,11 @@ const car_categories = [
         model: "720S",
         year: 2022,
         price_per_day: 450,
-        location: "Hitech City",
+        location: {
+          name: "Hitech City, Hyderabad",
+          lat: 17.433489,
+          lng: 78.500862,
+        },
         available: true,
         specifications: {
           engine: "4.0L Twin-Turbo V8",
@@ -987,7 +1218,11 @@ const car_categories = [
         model: "DB11",
         year: 2022,
         price_per_day: 400,
-        location: "Begumpet",
+        location: {
+          name: "Begumpet, Hyderabad",
+          lat: 17.721476,
+          lng: 83.226425,
+        },
         available: true,
         specifications: {
           engine: "4.0L Twin-Turbo V8",
@@ -1003,7 +1238,11 @@ const car_categories = [
         model: "GT-R",
         year: 2022,
         price_per_day: 320,
-        location: "Madhapur",
+        location: {
+          name: "Madhapur, Hyderabad",
+          lat: 17.722949,
+          lng: 83.328109,
+        },
         available: true,
         specifications: {
           engine: "3.8L Twin-Turbo V6",
@@ -1011,7 +1250,7 @@ const car_categories = [
           seating_capacity: 2,
         },
         image_url:
-          "https://www.motortrend.com/uploads/2023/06/2024-Nissan-GT-R-NISMO-front-view-25.jpg?fit=around%7C875:492.1875x",
+          "https://www.motortrend.com/uploads/2023/06/2024-Nissan-GT-R-NISMO-front-view-25.jpg?fit=around%7C875:492.1875",
       },
     ],
   },
@@ -1027,7 +1266,11 @@ const car_categories = [
         model: "Model S",
         year: 2022,
         price_per_day: 180,
-        location: "Banjara Hills",
+        location: {
+          name: "Banjara Hills, Hyderabad",
+          lat: 17.415432,
+          lng: 78.434799,
+        },
         available: true,
         specifications: {
           engine: "Electric",
@@ -1043,7 +1286,11 @@ const car_categories = [
         model: "Leaf",
         year: 2022,
         price_per_day: 150,
-        location: "Jubilee Hills",
+        location: {
+          name: "Jubilee Hills, Hyderabad",
+          lat: 17.421306,
+          lng: 78.434202,
+        },
         available: true,
         specifications: {
           engine: "Electric",
@@ -1057,7 +1304,11 @@ const car_categories = [
         model: "Bolt EV",
         year: 2022,
         price_per_day: 160,
-        location: "Gachibowli",
+        location: {
+          name: "Gachibowli, Hyderabad",
+          lat: 17.441136,
+          lng: 78.393282,
+        },
         available: true,
         specifications: {
           engine: "Electric",
@@ -1071,7 +1322,11 @@ const car_categories = [
         model: "Niro EV",
         year: 2022,
         price_per_day: 170,
-        location: "Hitech City",
+        location: {
+          name: "Hitech City, Hyderabad",
+          lat: 17.433489,
+          lng: 78.500862,
+        },
         available: true,
         specifications: {
           engine: "Electric",
@@ -1085,7 +1340,11 @@ const car_categories = [
         model: "i3",
         year: 2022,
         price_per_day: 190,
-        location: "Begumpet",
+        location: {
+          name: "Begumpet, Hyderabad",
+          lat: 17.721476,
+          lng: 83.226425,
+        },
         available: true,
         specifications: {
           engine: "Electric",
@@ -1099,7 +1358,11 @@ const car_categories = [
         model: "Kona Electric",
         year: 2022,
         price_per_day: 155,
-        location: "Madhapur",
+        location: {
+          name: "Madhapur, Hyderabad",
+          lat: 17.722949,
+          lng: 83.328109,
+        },
         available: true,
         specifications: {
           engine: "Electric",
@@ -1121,7 +1384,11 @@ const car_categories = [
         model: "Sienna",
         year: 2022,
         price_per_day: 120,
-        location: "Banjara Hills",
+        location: {
+          name: "Banjara Hills, Hyderabad",
+          lat: 17.415432,
+          lng: 78.434799,
+        },
         available: true,
         specifications: {
           engine: "2.5L Inline-4 Hybrid",
@@ -1137,7 +1404,11 @@ const car_categories = [
         model: "Odyssey",
         year: 2022,
         price_per_day: 130,
-        location: "Jubilee Hills",
+        location: {
+          name: "Jubilee Hills, Hyderabad",
+          lat: 17.421306,
+          lng: 78.434202,
+        },
         available: true,
         specifications: {
           engine: "3.5L V6",
@@ -1151,7 +1422,11 @@ const car_categories = [
         model: "Pacifica",
         year: 2022,
         price_per_day: 125,
-        location: "Gachibowli",
+        location: {
+          name: "Gachibowli, Hyderabad",
+          lat: 17.441136,
+          lng: 78.393282,
+        },
         available: true,
         specifications: {
           engine: "3.6L V6 Hybrid",
@@ -1165,7 +1440,11 @@ const car_categories = [
         model: "Carnival",
         year: 2022,
         price_per_day: 140,
-        location: "Hitech City",
+        location: {
+          name: "Hitech City, Hyderabad",
+          lat: 17.433489,
+          lng: 78.500862,
+        },
         available: true,
         specifications: {
           engine: "3.5L V6",
@@ -1179,7 +1458,11 @@ const car_categories = [
         model: "Transit Connect",
         year: 2022,
         price_per_day: 110,
-        location: "Begumpet",
+        location: {
+          name: "Begumpet, Hyderabad",
+          lat: 17.721476,
+          lng: 83.226425,
+        },
         available: true,
         specifications: {
           engine: "2.0L Inline-4",
@@ -1193,7 +1476,11 @@ const car_categories = [
         model: "Grand Caravan",
         year: 2022,
         price_per_day: 115,
-        location: "Madhapur",
+        location: {
+          name: "Madhapur, Hyderabad",
+          lat: 17.722949,
+          lng: 83.328109,
+        },
         available: true,
         specifications: {
           engine: "3.6L V6",

@@ -70,6 +70,45 @@ app.get("/cars/getCategoryCars/:id", async (req, res) => {
   }
 });
 
+app.get("/cars/getAvailableCars", async (req, res) => {
+  const {
+    pickUpLocation,
+    dropOffLocation,
+    pickUpDate,
+    pickUpTime,
+    dropOffData,
+    dropOffTime,
+  } = req.body;
+});
+
+app.post("/cars/bookCar", async (req, res) => {
+  const {
+    carId,
+    carType,
+    selectedPickUpLocation,
+    selectedDropOffLocation,
+    selectedPickUpDate,
+    selectedPickUpTime,
+    selectedDropOffDate,
+    selectedDropOffTime,
+  } = req.body;
+  try {
+    const result = await db.collection("bookings").doc(carType).set({
+      carId,
+      carType,
+      selectedPickUpLocation,
+      selectedDropOffLocation,
+      selectedPickUpDate,
+      selectedPickUpTime,
+      selectedDropOffDate,
+      selectedDropOffTime,
+    });
+    res.status(200).json({ status: 1, data: result });
+  } catch (err) {
+    res.status(200).json({ status: -1, error: err });
+  }
+});
+
 app.get("/locations/getLocations", async (req, res) => {
   try {
     const collection = await db.collection("locations");

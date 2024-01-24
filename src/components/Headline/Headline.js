@@ -5,11 +5,11 @@ import { Link } from "react-router-dom";
 
 const Headline = () => {
   return (
-    <div className="flex flex-wrap pt-28 px-[3.5%]">
+    <div className="flex flex-wrap pt-28 px-[5%]">
       <div className="pt-6">
         <div className="text-2xl font-bold">Find Your Ideal Car Rental</div>
         <div className="text-6xl font-bold my-6">
-          Effortless <span className="text-blue-800">Renting</span> and
+          Easy <span className="text-blue-800">Renting</span> and
           <br />
           Secure car <span className="text-blue-800">Hosting</span>
         </div>
@@ -36,7 +36,7 @@ const Headline = () => {
       </div>
       <div className="hidden md:block">
         {/* <img className="absolute top-0 right-0" src={map} alt="map" /> */}
-        <img className="absolute w-[50%]" src={car} alt="car" />
+        <img className="absolute w-[50%] ml-10" src={car} alt="car" />
       </div>
     </div>
   );
