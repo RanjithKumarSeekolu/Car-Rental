@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import location from "../../assets/location.gif";
 import Footer from "../Footer/Footer";
 import Shimmer from "../Shimmer/Shimmer";
+import apiUrl from "../../utils/Constants.js";
 
 const CategoryCars = () => {
   const { id } = useParams();
@@ -12,9 +13,7 @@ const CategoryCars = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          `http://localhost:4000/cars/getCategoryCars/${id}`
-        );
+        const response = await fetch(`${apiUrl}cars/getCategoryCars/${id}`);
         if (response.ok) {
           const data = await response.json();
           setCars(data.data);
@@ -27,8 +26,6 @@ const CategoryCars = () => {
     };
     fetchData();
   }, []);
-
-  console.log(cars.cars);
 
   return (
     <>

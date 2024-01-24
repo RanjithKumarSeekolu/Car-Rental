@@ -18,7 +18,6 @@ function RegistrationForm() {
 
       // User registration successful
       const user = userCredential.user;
-      console.log("User registered:", user);
     } catch (error) {
       console.error("Registration error:", error.message);
     }

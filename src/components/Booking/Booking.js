@@ -25,7 +25,6 @@ const Booking = () => {
         const response = await getLocations();
 
         setCarRentalLocations(response);
-        console.log("locations", carRentalLocations);
         setLoading(false);
       } catch (err) {
         console.log(err);
@@ -82,7 +81,6 @@ const Booking = () => {
       selectedPickUpTime,
       selectedDropOffTime,
     };
-    console.log("data", data);
   };
 
   return (

@@ -21,12 +21,6 @@ const Header = () => {
       .catch((error) => console.log(error.message));
   };
 
-  useEffect(() => {
-    if (user) {
-      console.log("window tracker");
-    }
-  }, [user]);
-
   return (
     <>
       <div className="flex justify-between items-center  px-[6%] py-5 fixed w-full z-20 bg-white font-bold">

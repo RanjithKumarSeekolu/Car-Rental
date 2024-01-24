@@ -4,7 +4,8 @@
   "description": "Query Text Fetcher !",
   "scripts": {
     "test": "jest",
-    "start": "npx parcel ./public/index.html",
+    "start": "cross-env NODE_ENV=production npx parcel ./public/index.html",
+    "dev": "cross-env NODE_ENV=development npx parcel ./public/index.html",
     "build": "parcel build ./public/index.html"
   },
   "author": "",
@@ -12,6 +13,7 @@
   "dependencies": {
     "@openreplay/tracker": "^9.0.9",
     "autoprefixer": "^10.4.14",
+    "cross-env": "^7.0.3",
     "firebase": "^10.3.1",
     "google-maps-react": "^2.0.6",
     "jspdf": "^2.5.1",
