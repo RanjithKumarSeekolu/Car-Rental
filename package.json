@@ -4,8 +4,8 @@
   "description": "Query Text Fetcher !",
   "scripts": {
     "test": "jest",
-    "start": "npx parcel index.html",
-    "build": "parcel build index.html"
+    "start": "npx parcel ./public/index.html",
+    "build": "parcel build ./public/index.html"
   },
   "author": "",
   "license": "ISC",
