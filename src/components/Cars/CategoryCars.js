@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import location from "../../assets/location.gif";
 import Footer from "../Footer/Footer";
 import Shimmer from "../Shimmer/Shimmer";
-import apiUrl from "../../utils/constants";
+import apiUrl from "../../utils/constants.js";
 
 const CategoryCars = () => {
   const { id } = useParams();
