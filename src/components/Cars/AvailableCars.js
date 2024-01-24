@@ -32,8 +32,6 @@ const AvailableCars = () => {
     getCars();
   }, []);
 
-  console.log("cars ", cars);
-
   const categoriesPerPage = {
     small: 1,
     medium: 2,

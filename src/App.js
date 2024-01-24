@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Headlinecontainer from "./components/Headline/HeadlineContainer";
 import Header from "./components/Header/Header";
 import Summary from "./components/Summary/Summary";

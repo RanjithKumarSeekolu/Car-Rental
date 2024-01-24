@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import apiUrl from "../../utils/constants";
 
 const AllCars = () => {
   const [cars, setCars] = useState([]);
@@ -8,7 +9,7 @@ const AllCars = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:4000/cars/getAllCars");
+        const response = await fetch(`${apiUrl}cars/getAllCars`);
         if (response.ok) {
           const data = await response.json();
           setCars(data);
@@ -22,7 +23,6 @@ const AllCars = () => {
     fetchData();
   }, []);
 
-  console.log("all Cars", cars);
   return (
     !loading && (
       <div>
