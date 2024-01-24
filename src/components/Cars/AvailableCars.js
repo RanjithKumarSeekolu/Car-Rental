@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import location from "../../assets/location.gif";
 import { Link } from "react-router-dom";
 import Shimmer from "../Shimmer/Shimmer";
+import apiUrl from "../../utils/Constants";
 
 const AvailableCars = () => {
   const [cars, setCars] = useState([]);
@@ -15,9 +16,7 @@ const AvailableCars = () => {
     const getCars = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch(
-          "http://localhost:4000/cars/getCars?limit=6"
-        );
+        const response = await fetch(`${apiUrl}cars/getCars?limit=6`);
         if (response.ok) {
           const data = await response.json();
           setCars(data);

@@ -1,6 +1,6 @@
-const baseUrl = "http://localhost:4000/";
+import apiUrl from "../../utils/Constants";
 export const getLocations = async () => {
-  return await fetch(`${baseUrl}locations/getLocations`, {
+  return await fetch(`${apiUrl}locations/getLocations`, {
     method: "GET",
     // body: JSON.stringify(payload),
   }).then((resp) => resp.json());
