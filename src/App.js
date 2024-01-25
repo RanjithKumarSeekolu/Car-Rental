@@ -15,6 +15,8 @@ import MapContainer from "./components/Maps/MapContainer";
 import RegistrationForm from "./components/Header/RegistrationForm";
 import Certificate from "./components/Certificate/Certificate";
 import AboutPage from "./components/AboutPage";
+import ContactUsPage from "./components/ContactUsPage";
+import DashboardPage from "./components/Dashboard/DashboardPage";
 
 const App = () => {
   return (
@@ -54,6 +56,14 @@ export const appRouter = createBrowserRouter([
       {
         path: "/about-us",
         element: <AboutPage />,
+      },
+      {
+        path: "/contact-us",
+        element: <ContactUsPage />,
+      },
+      {
+        path: "/dashboard",
+        element: <DashboardPage />,
       },
       {
         path: "/carHost",

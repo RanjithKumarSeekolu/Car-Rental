@@ -45,8 +45,12 @@ const Header = () => {
           <Link to="/maps">
             <div className="hover:text-blue-800 cursor-pointer">Locations</div>
           </Link>
-          <div className="hover:text-blue-800 cursor-pointer">Dashboard</div>
-          <div className="hover:text-blue-800 cursor-pointer">Contact</div>
+          <Link to="/dashboard">
+            <div className="hover:text-blue-800 cursor-pointer">Dashboard</div>
+          </Link>
+          <Link to="/contact-us">
+            <div className="hover:text-blue-800 cursor-pointer">Contact</div>
+          </Link>
         </div>
         {!user ||
           (Object.keys(user).length === 0 && (
