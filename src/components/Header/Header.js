@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../../../init-firebase";
 import UserMenu from "../UserModal/UserMenu";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/Logo.png";
 
 const Header = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
