@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../../../init-firebase";
 import UserMenu from "../UserModal/UserMenu";
+import logo from "../../assets/logo.png";
 
 const Header = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -23,9 +24,16 @@ const Header = () => {
 
   return (
     <>
-      <div className="flex justify-between items-center  px-[6%] py-5 fixed w-full z-20 bg-white font-bold">
+      <div
+        className={`flex justify-between items-center ${"navbar"} px-[6%] py-2 fixed w-full z-20 bg-white font-bold`}
+        style={{
+          background: "rgba(217, 217, 217, 0.01)",
+          boxShadow: "2px 4px 20px 0px rgba(125, 110, 235, 0.5)",
+          backdropFilter: "blur(10px)",
+        }}
+      >
         <Link to="/">
-          <div>Logo</div>
+          <img src={logo} alt="RentNHost" width={90} height={90} />
         </Link>
         <div className="md:flex items-center justify-between hidden space-x-5">
           <div className="hover:text-blue-800 cursor-pointer">About</div>
