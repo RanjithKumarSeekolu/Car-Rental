@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Logo1 } from "../../assets/Logo1.png";
+import FooterLogo from "../../assets/FooterLogo.png";
 
 const Footer = () => {
   return (
@@ -13,7 +13,7 @@ const Footer = () => {
       }}
     >
       <Link to="/">
-        <img src={Logo1} alt={"renNHost"} width={200} height={200} />
+        <img src={FooterLogo} alt={"renNHost"} width={200} height={200} />
       </Link>
       <div className="flex flex-col space-y-2">
         <div className="text-[#fff] cursor-auto">Company</div>
