@@ -25,7 +25,7 @@ const Header = () => {
   return (
     <>
       <div
-        className={`flex justify-between items-center ${"navbar"} px-[6%] py-2 fixed w-full z-20 bg-white font-bold`}
+        className={`flex justify-between bg-gray-300 items-center ${"navbar"} px-[6%] py-2 fixed w-full z-20 bg-white font-bold`}
         style={{
           background: "rgba(217, 217, 217, 0.01)",
           boxShadow: "2px 4px 20px 0px rgba(125, 110, 235, 0.5)",
@@ -36,7 +36,9 @@ const Header = () => {
           <img src={logo} alt="RentNHost" width={90} height={90} />
         </Link>
         <div className="md:flex items-center justify-between hidden space-x-5">
-          <div className="hover:text-blue-800 cursor-pointer">About</div>
+          <Link to="/about-us">
+            <div className="hover:text-blue-800 cursor-pointer">About</div>
+          </Link>
           <Link to="/allCars">
             <div className="hover:text-blue-800 cursor-pointer">Cars</div>
           </Link>

@@ -14,6 +14,7 @@ import path from "path-browserify";
 import MapContainer from "./components/Maps/MapContainer";
 import RegistrationForm from "./components/Header/RegistrationForm";
 import Certificate from "./components/Certificate/Certificate";
+import AboutPage from "./components/AboutPage";
 
 const App = () => {
   return (
@@ -49,6 +50,10 @@ export const appRouter = createBrowserRouter([
       {
         path: "/allCars",
         element: <AllCars />,
+      },
+      {
+        path: "/about-us",
+        element: <AboutPage />,
       },
       {
         path: "/carHost",
