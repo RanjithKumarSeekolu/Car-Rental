@@ -34,11 +34,11 @@ const DashboardPage = () => {
   };
 
   return (
-    <div className="bg-gray-50 min-h-screen py-12">
+    <div className="bg-gray-50 dark:bg-gray-950 min-h-screen pb-12 pt-22 transition-colors duration-300">
       <Container>
         <div className="mb-8">
-            <h1 className="text-3xl font-bold text-gray-900">My Dashboard</h1>
-            <p className="text-gray-500 mt-1">Manage your account, bookings, and listings from here.</p>
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-white">My Dashboard</h1>
+            <p className="text-gray-500 dark:text-gray-400 mt-1">Manage your account, bookings, and listings from here.</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">

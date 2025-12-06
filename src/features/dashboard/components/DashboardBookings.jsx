@@ -37,37 +37,37 @@ const DashboardBookings = () => {
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-gray-900 mb-6">My Bookings</h2>
+      <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">My Bookings</h2>
       
       <div className="space-y-4">
         {bookings.map((booking) => (
-            <div key={booking.id} className="bg-white border boundary-gray-200 rounded-xl p-4 flex flex-col md:flex-row gap-6 shadow-sm hover:shadow-md transition-shadow">
-                <div className="w-full md:w-48 h-32 flex-shrink-0 rounded-lg overflow-hidden bg-gray-100">
+            <div key={booking.id} className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-4 flex flex-col md:flex-row gap-6 shadow-sm hover:shadow-md transition-all">
+                <div className="w-full md:w-48 h-32 flex-shrink-0 rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-800">
                     <img src={booking.image} alt={booking.car} className="w-full h-full object-cover" />
                 </div>
                 
                 <div className="flex-grow flex flex-col justify-between">
                     <div>
                         <div className="flex justify-between items-start">
-                            <h3 className="text-xl font-bold text-gray-800">{booking.car}</h3>
+                            <h3 className="text-xl font-bold text-gray-800 dark:text-white">{booking.car}</h3>
                             <span className={`px-3 py-1 rounded-full text-xs font-semibold
-                                ${booking.status === 'Completed' ? 'bg-green-100 text-green-700' : 
-                                  booking.status === 'Active' ? 'bg-blue-100 text-blue-700' :
-                                  'bg-yellow-100 text-yellow-700'}`}>
+                                ${booking.status === 'Completed' ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400' : 
+                                  booking.status === 'Active' ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400' :
+                                  'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400'}`}>
                                 {booking.status}
                             </span>
                         </div>
-                        <p className="text-gray-500 text-sm mt-1">{booking.location}</p>
+                        <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">{booking.location}</p>
                     </div>
 
                     <div className="flex justify-between items-end mt-4">
                         <div className="text-sm">
-                            <p className="text-gray-600"><span className="font-semibold text-gray-900">From:</span> {booking.startDate}</p>
-                            <p className="text-gray-600"><span className="font-semibold text-gray-900">To:</span> {booking.endDate}</p>
+                            <p className="text-gray-600 dark:text-gray-300"><span className="font-semibold text-gray-900 dark:text-white">From:</span> {booking.startDate}</p>
+                            <p className="text-gray-600 dark:text-gray-300"><span className="font-semibold text-gray-900 dark:text-white">To:</span> {booking.endDate}</p>
                         </div>
                         <div className="text-right">
-                             <p className="text-xs text-gray-500">Total Price</p>
-                             <p className="text-lg font-bold text-indigo-600">{booking.totalPrice}</p>
+                             <p className="text-xs text-gray-500 dark:text-gray-400">Total Price</p>
+                             <p className="text-lg font-bold text-indigo-600 dark:text-indigo-400">{booking.totalPrice}</p>
                         </div>
                     </div>
                 </div>

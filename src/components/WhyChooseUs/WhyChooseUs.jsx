@@ -33,21 +33,21 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <section className="py-24 bg-gray-50">
+    <section className="py-24 bg-gray-50 dark:bg-gray-950 transition-colors duration-300">
       <Container>
         <div className="text-center mb-16">
-          <span className="text-indigo-600 font-bold uppercase tracking-wider text-sm">Why Choose RentNHost</span>
-          <h2 className="text-3xl md:text-4xl font-bold mt-2 text-gray-900">Experience the best car rental service in India</h2>
+          <span className="text-indigo-600 dark:text-indigo-400 font-bold uppercase tracking-wider text-sm">Why Choose RentNHost</span>
+          <h2 className="text-3xl md:text-4xl font-bold mt-2 text-gray-900 dark:text-white">Experience the best car rental service in India</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <div key={index} className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center group cursor-pointer">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center mb-6 shadow-lg shadow-indigo-200 group-hover:scale-110 transition-transform duration-300">
+            <div key={index} className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center group cursor-pointer">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center mb-6 shadow-lg shadow-indigo-200 dark:shadow-indigo-900/30 group-hover:scale-110 transition-transform duration-300">
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-bold mb-3 text-gray-900">{feature.title}</h3>
-              <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+              <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">{feature.title}</h3>
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{feature.description}</p>
             </div>
           ))}
         </div>

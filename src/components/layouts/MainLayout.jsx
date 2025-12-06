@@ -13,9 +13,9 @@ const MainLayout = () => {
   }, [initializeAuth]);
 
   return (
-    <div className="flex flex-col min-h-screen font-outfit">
+    <div className="flex flex-col min-h-screen bg-white dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
       <Header />
-      <main className="flex-grow pt-8">
+      <main className="flex-grow">
         <Outlet />
       </main>
       <Footer />

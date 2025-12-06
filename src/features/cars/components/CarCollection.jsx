@@ -32,20 +32,24 @@ const CarCollection = () => {
   if (loading && cars.length === 0) return <div className="text-center py-20">Loading...</div>;
 
   return (
-    <div className="py-20 bg-gray-50">
+    <div className="py-20 bg-gray-50 dark:bg-gray-950 transition-colors duration-300">
       <Container>
         <div className="text-center mb-12">
-           <span className="text-blue-800 font-semibold uppercase tracking-wider">Collection</span>
-           <h2 className="text-4xl font-bold mt-2">Our Collection Cars</h2>
+           <span className="text-blue-800 dark:text-blue-400 font-semibold uppercase tracking-wider">Collection</span>
+           <h2 className="text-4xl font-bold mt-2 text-gray-900 dark:text-white">Our Collection Cars</h2>
         </div>
 
         {/* Category Tabs (Simplified for brevity in overhaul, can be expanded) */}
-        <div className="flex justify-center flex-wrap gap-4 mb-10 border-b border-gray-200 pb-4">
+        <div className="flex justify-center flex-wrap gap-4 mb-10 border-b border-gray-200 dark:border-gray-800 pb-4">
              {cars.map((category) => (
                <button 
                  key={category.id}
                  onClick={() => setShowCategoryCarsId(category.id)}
-                 className={`px-4 py-2 rounded-full transition-all ${showCategoryCarsId === category.id ? 'bg-black text-white' : 'hover:bg-gray-200'}`}
+                 className={`px-4 py-2 rounded-full transition-all font-medium ${
+                    showCategoryCarsId === category.id 
+                    ? 'bg-black text-white dark:bg-white dark:text-black' 
+                    : 'text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800'
+                 }`}
                >
                  {category.name}
                </button>

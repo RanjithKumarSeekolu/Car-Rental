@@ -18,9 +18,9 @@ const CarCard = ({ car }) => {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
         whileHover={{ y: -5, transition: { duration: 0.2 } }}
-        className="bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 overflow-hidden group flex flex-col h-full"
+        className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300 overflow-hidden group flex flex-col h-full"
     >
-      <div className="relative h-56 overflow-hidden bg-gray-50">
+      <div className="relative h-56 overflow-hidden bg-gray-50 dark:bg-gray-900">
         <img
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
             src={car.image_url}
@@ -39,11 +39,11 @@ const CarCard = ({ car }) => {
       <div className="p-5 flex flex-col flex-grow">
         <div className="flex justify-between items-start mb-2">
             <div>
-                <h3 className="font-bold text-lg text-gray-900 leading-tight">{car.make} {car.model}</h3>
-                <p className="text-sm text-gray-500 mt-1">{car.location || "Mumbai, Maharashtra"}</p>
+                <h3 className="font-bold text-lg text-gray-900 dark:text-white leading-tight">{car.make} {car.model}</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{car.location || "Mumbai, Maharashtra"}</p>
             </div>
             <div className="flex flex-col items-end">
-                <div className="flex items-center gap-1 bg-green-50 px-2 py-1 rounded text-xs font-bold text-green-700">
+                <div className="flex items-center gap-1 bg-green-50 dark:bg-green-900/30 px-2 py-1 rounded text-xs font-bold text-green-700 dark:text-green-400">
                     <span>{rating}</span>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-3 h-3">
                         <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clipRule="evenodd" />
@@ -53,7 +53,7 @@ const CarCard = ({ car }) => {
             </div>
         </div>
 
-        <div className="flex items-center gap-4 my-4 text-sm text-gray-600 font-medium">
+        <div className="flex items-center gap-4 my-4 text-sm text-gray-600 dark:text-gray-300 font-medium">
             <div className="flex items-center gap-1.5">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
@@ -76,10 +76,10 @@ const CarCard = ({ car }) => {
             </div>
         </div>
 
-        <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+        <div className="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-700">
             <div>
-                <span className="text-2xl font-bold text-gray-900">${car.mockPrice || car.price_per_day || 50}</span>
-                <span className="text-sm text-gray-500 font-medium">/day</span>
+                <span className="text-2xl font-bold text-gray-900 dark:text-white">${car.mockPrice || car.price_per_day || 50}</span>
+                <span className="text-sm text-gray-500 dark:text-gray-400 font-medium">/day</span>
             </div>
             <Link 
                 to={`/booking/${car._id || car.id}`}

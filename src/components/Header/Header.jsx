@@ -1,15 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../../config/firebase";
 import UserMenu from "../UserModal/UserMenu";
 import logo from "../../assets/Logo.png";
+import useThemeStore from "../../store/useThemeStore";
 import useAuthStore from "../../store/useAuthStore";
+import ThemeToggle from "../ui/ThemeToggle";
 
 const Header = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const { user, logout } = useAuthStore();
+  const { initialize } = useThemeStore();
+
+  useEffect(() => {
+    initialize();
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [initialize]);
 
   const toggleDrawer = () => {
     setOpenDrawer(!openDrawer);
@@ -23,7 +37,11 @@ const Header = () => {
   return (
     <>
       <header
-        className="fixed w-full z-50 top-0 transition-all duration-300 bg-white/80 backdrop-blur-md border-b border-gray-100 shadow-sm px-[4%] md:px-[6%] py-3 flex justify-between items-center"
+        className={`fixed w-full z-50 top-0 transition-all duration-300 px-[4%] md:px-[6%] flex justify-between items-center ${
+          isScrolled
+            ? "bg-white/80 backdrop-blur-md border-b border-gray-100 dark:bg-gray-900/80 dark:border-gray-800 shadow-sm py-3"
+            : "bg-transparent py-5"
+        }`}
       >
         <Link to="/" className="flex-shrink-0">
           <img src={logo} alt="RentNHost" className="h-10 w-auto md:h-12" />
@@ -31,22 +49,24 @@ const Header = () => {
         
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
-          <Link to="/allCars" className="text-sm font-medium text-gray-600 hover:text-indigo-600 transition-colors tracking-wide">
+          <Link to="/allCars" className="text-sm font-medium text-gray-700 hover:text-indigo-600 dark:text-gray-300 dark:hover:text-indigo-400 transition-colors tracking-wide">
             Cars
           </Link>
-          <Link to="/maps" className="text-sm font-medium text-gray-600 hover:text-indigo-600 transition-colors tracking-wide">
+          <Link to="/maps" className="text-sm font-medium text-gray-700 hover:text-indigo-600 dark:text-gray-300 dark:hover:text-indigo-400 transition-colors tracking-wide">
             Locations
           </Link>
-          <Link to="/dashboard" className="text-sm font-medium text-gray-600 hover:text-indigo-600 transition-colors tracking-wide">
+          <Link to="/dashboard" className="text-sm font-medium text-gray-700 hover:text-indigo-600 dark:text-gray-300 dark:hover:text-indigo-400 transition-colors tracking-wide">
             Dashboard
           </Link>
-          <Link to="/contact-us" className="text-sm font-medium text-gray-600 hover:text-indigo-600 transition-colors tracking-wide">
+          <Link to="/contact-us" className="text-sm font-medium text-gray-700 hover:text-indigo-600 dark:text-gray-300 dark:hover:text-indigo-400 transition-colors tracking-wide">
             Contact
           </Link>
         </nav>
 
         {/* Desktop Auth / User */}
         <div className="hidden md:flex items-center gap-4">
+            <ThemeToggle />
+            
             {!user ? (
                 <button
                 onClick={googleLoginHandler}
@@ -79,8 +99,9 @@ const Header = () => {
         </div>
 
         {/* Mobile Hamburger */}
-        <div className="md:hidden">
-          <button onClick={toggleDrawer} className="p-2 text-gray-700 hover:text-indigo-600 transition-colors focus:outline-none">
+        <div className="md:hidden flex items-center gap-4">
+          <ThemeToggle />
+          <button onClick={toggleDrawer} className="p-2 text-gray-700 dark:text-gray-200 hover:text-indigo-600 transition-colors focus:outline-none">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-7 h-7">
               <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
             </svg>
@@ -97,12 +118,12 @@ const Header = () => {
           />
           
           <div
-            className={`fixed top-0 right-0 h-screen w-72 bg-white shadow-2xl z-50 overflow-y-auto transform transition-transform duration-300 ease-in-out ${openDrawer ? "translate-x-0" : "translate-x-full"}`}
+            className={`fixed top-0 right-0 h-screen w-72 bg-white dark:bg-gray-900 shadow-2xl z-50 overflow-y-auto transform transition-transform duration-300 ease-in-out ${openDrawer ? "translate-x-0" : "translate-x-full"}`}
           >
             <div className="p-6">
               <div className="flex justify-between items-center mb-8">
-                 <span className="text-lg font-bold text-gray-900">Menu</span>
-                <button onClick={toggleDrawer} className="p-2 text-gray-400 hover:text-gray-800 transition-colors focus:outline-none">
+                 <span className="text-lg font-bold text-gray-900 dark:text-white">Menu</span>
+                <button onClick={toggleDrawer} className="p-2 text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors focus:outline-none">
                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                   </svg>
@@ -110,21 +131,21 @@ const Header = () => {
               </div>
               
               <div className="flex flex-col space-y-2">
-                <Link to="/allCars" onClick={toggleDrawer} className="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-indigo-600 rounded-xl transition-all">
+                <Link to="/allCars" onClick={toggleDrawer} className="flex items-center gap-3 px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-indigo-600 rounded-xl transition-all">
                    <span className="font-medium">Cars</span>
                 </Link>
-                <Link to="/maps" onClick={toggleDrawer} className="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-indigo-600 rounded-xl transition-all">
+                <Link to="/maps" onClick={toggleDrawer} className="flex items-center gap-3 px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-indigo-600 rounded-xl transition-all">
                   <span className="font-medium">Locations</span>
                 </Link>
-                <Link to="/dashboard" onClick={toggleDrawer} className="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-indigo-600 rounded-xl transition-all">
+                <Link to="/dashboard" onClick={toggleDrawer} className="flex items-center gap-3 px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-indigo-600 rounded-xl transition-all">
                   <span className="font-medium">Dashboard</span>
                 </Link>
-                 <Link to="/contact-us" onClick={toggleDrawer} className="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-indigo-600 rounded-xl transition-all">
+                 <Link to="/contact-us" onClick={toggleDrawer} className="flex items-center gap-3 px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-indigo-600 rounded-xl transition-all">
                   <span className="font-medium">Contact</span>
                 </Link>
               </div>
 
-              <div className="mt-8 pt-8 border-t border-gray-100">
+              <div className="mt-8 pt-8 border-t border-gray-100 dark:border-gray-800">
                 {!user ? (
                    <button 
                     onClick={() => {
@@ -144,11 +165,11 @@ const Header = () => {
                           className="h-12 w-12 rounded-full border-2 border-indigo-100 object-cover"
                         />
                         <div>
-                            <p className="font-semibold text-gray-900 truncate">{user.displayName || "User"}</p>
+                            <p className="font-semibold text-gray-900 dark:text-white truncate">{user.displayName || "User"}</p>
                             <p className="text-xs text-gray-500">{user.email}</p>
                         </div>
                      </div>
-                     <Link to="/carHost" onClick={toggleDrawer} className="block w-full py-3 text-center bg-indigo-50 text-indigo-700 rounded-lg font-semibold hover:bg-indigo-100 transition-colors">
+                     <Link to="/carHost" onClick={toggleDrawer} className="block w-full py-3 text-center bg-indigo-50 dark:bg-gray-800 text-indigo-700 dark:text-indigo-400 rounded-lg font-semibold hover:bg-indigo-100 dark:hover:bg-gray-700 transition-colors">
                         Host My Car
                      </Link>
                      <button
@@ -156,7 +177,7 @@ const Header = () => {
                           logout();
                           toggleDrawer();
                         }}
-                        className="block w-full py-3 text-center text-red-600 font-medium hover:bg-red-50 rounded-lg transition-colors"
+                        className="block w-full py-3 text-center text-red-600 font-medium hover:bg-red-50 dark:hover:bg-gray-800 rounded-lg transition-colors"
                       >
                         Log Out
                       </button>

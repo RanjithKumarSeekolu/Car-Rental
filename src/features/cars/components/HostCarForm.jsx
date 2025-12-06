@@ -90,8 +90,8 @@ const HostCarForm = () => {
   };
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-lg border border-gray-100">
-      <h2 className="text-2xl font-bold mb-6 text-gray-800">List Your Car</h2>
+    <div className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg border border-gray-100 dark:border-gray-800 transition-colors duration-300">
+      <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white">List Your Car</h2>
       
       {error && (
         <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
@@ -156,27 +156,28 @@ const HostCarForm = () => {
         />
 
         <div className="flex flex-col gap-1 w-full">
-            <label className="text-sm font-medium text-gray-700">Car Image *</label>
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Car Image *</label>
             <input 
                 type="file" 
                 accept="image/*"
                 onChange={handleImageChange}
-                className="block w-full text-sm text-gray-500
+                className="block w-full text-sm text-gray-500 dark:text-gray-400
                     file:mr-4 file:py-2 file:px-4
                     file:rounded-full file:border-0
                     file:text-sm file:font-semibold
                     file:bg-indigo-50 file:text-indigo-700
-                    hover:file:bg-indigo-100"
+                    dark:file:bg-indigo-900/30 dark:file:text-indigo-400
+                    hover:file:bg-indigo-100 dark:hover:file:bg-indigo-900/50"
                 disabled={loading || storeLoading}
             />
-             {formData.image_url && <span className="text-xs text-gray-400">Or use URL: {formData.image_url}</span>}
+             {formData.image_url && <span className="text-xs text-gray-400 dark:text-gray-500">Or use URL: {formData.image_url}</span>}
         </div>
         
         <div className="flex flex-col gap-1 w-full">
-            <label className="text-sm font-medium text-gray-700">Description</label>
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Description</label>
             <textarea
                 name="description"
-                className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all min-h-[100px]"
+                className="border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all min-h-[100px]"
                 placeholder="Tell us about your car..."
                 value={formData.description}
                 onChange={handleChange}
