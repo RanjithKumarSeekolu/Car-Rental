@@ -2,7 +2,7 @@ import React from "react";
 
 const BrandIcons = () => {
   return (
-    <div className="m-12 mt-16 px-4 bg-neutral-200 rounded-lg items-center justify-between shadow-lg hidden md:flex">
+    <div className="mx-12 px-4 bg-neutral-200 rounded-lg items-center justify-between shadow-lg hidden md:flex">
       <img
         width="100"
         height="100"

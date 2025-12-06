@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import location from "../../assets/location.gif";
-import Footer from "../Footer/Footer";
-import Shimmer from "../Shimmer/Shimmer";
-import apiUrl from "../../utils/Constants.js";
+import location from "../assets/location.gif";
+import Footer from "../components/Footer/Footer";
+import Shimmer from "../components/Shimmer/Shimmer";
+import apiUrl from "../utils/Constants.js";
 
 const CategoryCars = () => {
   const { id } = useParams();

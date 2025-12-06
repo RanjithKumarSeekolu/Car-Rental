@@ -2,33 +2,54 @@ import React from "react";
 import map from "../../assets/backdrop.png";
 import car from "../../assets/car.png";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Headline = () => {
   return (
-    <div className="flex flex-wrap pt-28 px-[5%]">
-      <div className="pt-6">
-<div className="text-left">
-  <div className="text-2xl font-bold text-left">
-    Find Your Ideal Car Rental
-  </div>
+    <div className="grid grid-cols-1 pb-8 md:grid-cols-2 gap-8 pt-28 md:pt-10 px-[5%] items-center overflow-hidden min-h-0 md:min-h-[75vh]">
+      <div className="flex flex-col justify-center z-10">
+        <div className="text-left">
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-2xl font-bold text-left"
+          >
+            Find Your Ideal Car Rental
+          </motion.div>
 
-  <div className="text-6xl font-bold my-6 text-left">
-    Easy <span className="text-blue-800">Renting</span> and
-    <br />
-    Secure car <span className="text-blue-800">Hosting</span>
-  </div>
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-5xl md:text-6xl font-bold my-6 text-left leading-tight"
+          >
+            Easy <span className="text-blue-800">Renting</span> and
+            <br />
+            Secure car <span className="text-blue-800">Hosting</span>
+          </motion.div>
 
-  <div className="text-gray-600 mb-8 text-lg text-left">
-    Search and discover the best car rental options with ease.
-  </div>
-</div>
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-gray-600 mb-8 text-lg text-left"
+          >
+            Search and discover the best car rental options with ease.
+          </motion.div>
+        </div>
 
-        <div className="flex">
-          <button className="bg-blue-800 py-3 px-5 mr-8 font-bold text-white">
-            find your best match
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="flex flex-wrap gap-4"
+        >
+          <button className="bg-blue-800 py-3 px-5 font-bold text-white hover:scale-105 transition-transform duration-200 rounded-sm">
+            Find your best match
           </button>
           <Link to="carHost">
-            <button className="border-b-2 bg-gray-300 text-black font-bold py-3 px-8 flex items-center">
+            <button className="border-b-2 bg-gray-100 text-black font-bold py-3 px-8 flex items-center hover:bg-gray-200 transition-colors duration-200 rounded-sm">
               Host Your Car
               <img
                 className="pl-2"
@@ -39,11 +60,18 @@ const Headline = () => {
               />
             </button>
           </Link>
-        </div>
+        </motion.div>
       </div>
-      <div className="hidden md:block">
-        {/* <img className="absolute top-0 right-0" src={map} alt="map" /> */}
-        <img className="absolute w-[50%] ml-10" src={car} alt="car" />
+
+      <div className="hidden md:flex relative justify-center md:justify-end mt-8 md:mt-0 scale-[1.2]">
+        <motion.img 
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="w-full max-w-[600px] h-auto object-contain" 
+          src={car} 
+          alt="car" 
+        />
       </div>
     </div>
   );
