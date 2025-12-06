@@ -1,4 +1,4 @@
-import apiUrl from "../../utils/Constants";
+import apiUrl from "../utils/Constants";
 export const getLocations = async () => {
   return await fetch(`${apiUrl}locations/getLocations`, {
     method: "GET",

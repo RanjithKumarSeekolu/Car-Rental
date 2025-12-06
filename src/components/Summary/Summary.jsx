@@ -5,9 +5,9 @@ const Summary = () => {
   return (
     <div className="flex px-[6%] py-24 flex-row flex-wrap flex-grow">
       <div>
-        <img src={cars} alt="cars" className="rounded-md w-[90%] h-[90%]" />
+        <img src={cars} alt="cars" className="rounded-md w-[90%] h-[90%] opacity-60" />
       </div>
-      <div className="flex flex-col">
+      <div className="flex flex-col text-left">
         <div className="text-blue-800 font-semibold py-2 text-2xl">
           About Us
         </div>

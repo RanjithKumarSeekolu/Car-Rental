@@ -1,85 +1,71 @@
-import React from "react";
-import Headlinecontainer from "./components/Headline/HeadlineContainer";
-import Header from "./components/Header/Header";
-import Summary from "./components/Summary/Summary";
-import OurServices from "./components/OurServices/OurServices";
-import AvailableCars from "./components/Cars/AvailableCars";
-import Footer from "./components/Footer/Footer";
-import Booking from "./components/Booking/Booking";
-import { createBrowserRouter, Outlet } from "react-router-dom";
-import AllCars from "./components/Cars/AllCars";
-import CarHost from "./components/CarHost/CarHost";
-import CategoryCars from "./components/Cars/CategoryCars";
-// import MapContainer from "./components/Maps/MapContainer";
-import RegistrationForm from "./components/Header/RegistrationForm";
-import AboutPage from "./components/AboutPage";
-import ContactUsPage from "./components/ContactUsPage";
-import DashboardPage from "./components/Dashboard/DashboardPage";
+import React, { Suspense, lazy } from "react";
+import { createBrowserRouter } from "react-router-dom";
+import MainLayout from "./components/layouts/MainLayout";
+import Loader from "./components/ui/Loader";
+import ErrorBoundary from "./components/ui/ErrorBoundary";
 
+// Lazy Load Pages
+const Landing = lazy(() => import("./pages/Landing"));
+const AllCars = lazy(() => import("./pages/AllCars"));
+const About = lazy(() => import("./pages/About"));
+const Contact = lazy(() => import("./pages/Contact"));
+const Dashboard = lazy(() => import("./pages/Dashboard"));
+const CarHost = lazy(() => import("./pages/CarHost"));
+const CategoryCars = lazy(() => import("./pages/CategoryCars"));
+const Register = lazy(() => import("./pages/Register"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const BookingPage = lazy(() => import("./pages/BookingPage"));
 
-const HomePage = () => {
-  return (
-    <>
-      <Header />
-      <Outlet />
-    </>
-  );
-};
-
-const Content = () => {
-  return (
-    <>
-      <Headlinecontainer />
-      <Booking />
-      <Summary />
-      <OurServices />
-      <AvailableCars />
-      <Footer />
-    </>
-  );
-};
+const PageWrapper = ({ children }) => (
+  <Suspense fallback={<Loader />}>{children}</Suspense>
+);
 
 export const AppRouter = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage />,
+    element: <MainLayout />,
+    errorElement: <ErrorBoundary />,
     children: [
       {
-        index: "/",
-        element: <Content />,
+        index: true,
+        element: <PageWrapper><Landing /></PageWrapper>,
       },
       {
         path: "/allCars",
-        element: <AllCars />,
+        element: <PageWrapper><AllCars /></PageWrapper>,
       },
       {
         path: "/about-us",
-        element: <AboutPage />,
+        element: <PageWrapper><About /></PageWrapper>,
       },
       {
         path: "/contact-us",
-        element: <ContactUsPage />,
+        element: <PageWrapper><Contact /></PageWrapper>,
       },
       {
         path: "/dashboard",
-        element: <DashboardPage />,
+        element: <PageWrapper><Dashboard /></PageWrapper>,
       },
       {
         path: "/carHost",
-        element: <CarHost />,
+        element: <PageWrapper><CarHost /></PageWrapper>,
       },
       {
         path: "/allCars/:id",
-        element: <CategoryCars />,
+        element: <PageWrapper><CategoryCars /></PageWrapper>,
       },
-      // {
-      //   path: "/maps",
-      //   element: <MapContainer />,
-      // },
+      {
+        path: "/booking/:carId",
+        element: <PageWrapper><BookingPage /></PageWrapper>,
+      },
       {
         path: "/registerUser",
-        element: <RegistrationForm />,
+        element: <PageWrapper><Register /></PageWrapper>,
+      },
+      {
+        path: "*",
+        element: <PageWrapper><NotFound /></PageWrapper>,
       },
     ],
-  }
+  },
 ]);
