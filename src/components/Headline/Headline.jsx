@@ -68,7 +68,7 @@ const Headline = () => {
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="w-full max-w-[600px] h-auto object-contain dark:brightness-90 transition-all duration-300" 
+          className="w-full max-w-[600px] h-auto object-contain dark:brightness-90 transition-[filter] duration-300" 
           src={car} 
           alt="car" 
         />
