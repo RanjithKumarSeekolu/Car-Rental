@@ -19,7 +19,7 @@ const RegisterForm = () => {
   };
 
   return (
-    <form onSubmit={handleRegistration} className="flex flex-col gap-4 max-w-md mx-auto p-6 bg-white shadow rounded-lg">
+    <form onSubmit={handleRegistration} className="flex flex-col gap-4 w-full">
       <h2 className="text-2xl font-bold text-center">Register</h2>
       <Input
         label="Email"

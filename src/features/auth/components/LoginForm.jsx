@@ -64,8 +64,8 @@ const LoginForm = () => {
       </form>
 
       <div className="relative flex items-center justify-center">
-        <div className="border-t border-gray-200 w-full" />
-        <span className="bg-white px-2 text-sm text-gray-500 absolute">OR</span>
+        <div className="border-t border-gray-200 dark:border-gray-700 w-full" />
+        <span className="bg-white dark:bg-gray-800 px-2 text-sm text-gray-500 dark:text-gray-400 absolute transition-colors duration-300">OR</span>
       </div>
 
       <Button 
