@@ -104,7 +104,7 @@ const AllCarsList = () => {
     if (loading) return <Loader />;
 
     return (
-        <Container className="py-12 bg-gray-50 min-h-screen">
+        <Container className="py-12 bg-gray-50 dark:bg-gray-950 min-h-screen transition-colors duration-300">
              <div className="flex flex-col lg:flex-row gap-8">
                 {/* Sidebar */}
                 <CarFiltersSidebar 
@@ -116,10 +116,10 @@ const AllCarsList = () => {
                 />
 
                 {/* Main Content */}
-                <div className="flex-1 pt-4">
+                <div className="flex-1 pt-12">
                     <div className="mb-6">
-                        <h1 className="text-3xl font-bold text-gray-900 mb-2">Browse Cars</h1>
-                        <p className="text-gray-500 mb-6">Find the perfect car for your journey</p>
+                        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Browse Cars</h1>
+                        <p className="text-gray-500 dark:text-gray-400 mb-6">Find the perfect car for your journey</p>
                         
                         {/* Wrapper for Search and Mobile Filter Button */}
                         <div className="flex gap-4">
@@ -132,7 +132,7 @@ const AllCarsList = () => {
                                 </div>
                                 <input
                                     type="text"
-                                    className="block w-full pl-10 pr-3 py-3 border border-gray-200 rounded-xl leading-5 bg-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-shadow shadow-sm"
+                                    className="block w-full pl-10 pr-3 py-3 border border-gray-200 dark:border-gray-700 rounded-xl leading-5 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all shadow-sm"
                                     placeholder="Search by make or model..."
                                     value={searchTerm}
                                     onChange={(e) => setSearchTerm(e.target.value)}
@@ -142,17 +142,17 @@ const AllCarsList = () => {
                             {/* Mobile Filter Trigger Button */}
                             <button 
                                 onClick={() => setIsFilterOpen(true)}
-                                className="lg:hidden flex items-center gap-2 bg-white border border-gray-200 px-4 py-3 rounded-xl shadow-sm hover:bg-gray-50 transition-colors"
+                                className="lg:hidden flex items-center gap-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 px-4 py-3 rounded-xl shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                             >
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-gray-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-gray-600 dark:text-gray-300">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
                                 </svg>
-                                <span className="font-medium text-gray-700">Filters</span>
+                                <span className="font-medium text-gray-700 dark:text-gray-200">Filters</span>
                             </button>
                         </div>
                     </div>
 
-                    <div className="mb-4 text-sm font-semibold text-gray-700">
+                    <div className="mb-4 text-sm font-semibold text-gray-700 dark:text-gray-300">
                         Showing {filteredCars.length} cars
                     </div>
 
@@ -163,14 +163,14 @@ const AllCarsList = () => {
                             ))}
                         </div>
                     ) : (
-                        <div className="flex flex-col items-center justify-center py-20 bg-white rounded-xl border border-dashed border-gray-300">
+                        <div className="flex flex-col items-center justify-center py-20 bg-white dark:bg-gray-800 rounded-xl border border-dashed border-gray-300 dark:border-gray-700 transition-colors">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-16 h-16 text-gray-300 mb-4">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
                             </svg>
-                            <p className="text-xl text-gray-500 font-medium">No cars found matching your criteria.</p>
+                            <p className="text-xl text-gray-500 dark:text-gray-400 font-medium">No cars found matching your criteria.</p>
                             <button 
                                 onClick={clearFilters}
-                                className="mt-4 text-indigo-600 font-medium hover:underline"
+                                className="mt-4 text-indigo-600 dark:text-indigo-400 font-medium hover:underline"
                             >
                                 Reset all filters
                             </button>

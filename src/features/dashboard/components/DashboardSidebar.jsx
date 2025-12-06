@@ -20,15 +20,15 @@ const DashboardSidebar = ({ activeTab, setActiveTab, user, logout }) => {
   ];
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 h-full min-h-[500px]">
+    <div className="bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 p-6 h-full min-h-[500px] transition-colors">
       <div className="flex flex-col items-center mb-10">
         <img
             src={user?.photoURL || "https://img.icons8.com/ios-filled/100/user-male-circle.png"}
             alt="Profile"
-            className="w-24 h-24 rounded-full border-4 border-gray-50 mb-4 shadow-sm"
+            className="w-24 h-24 rounded-full border-4 border-gray-50 dark:border-gray-800 mb-4 shadow-sm"
         />
-        <h3 className="text-xl font-bold text-gray-900">{user?.displayName || "User"}</h3>
-        <p className="text-sm text-gray-500">{user?.email}</p>
+        <h3 className="text-xl font-bold text-gray-900 dark:text-white">{user?.displayName || "User"}</h3>
+        <p className="text-sm text-gray-500 dark:text-gray-400">{user?.email}</p>
       </div>
 
       <nav className="space-y-2">
@@ -38,8 +38,8 @@ const DashboardSidebar = ({ activeTab, setActiveTab, user, logout }) => {
             onClick={() => setActiveTab(item.id)}
             className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ${
               activeTab === item.id
-                ? 'bg-indigo-50 text-indigo-700 font-medium'
-                : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                ? 'bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-400 font-medium'
+                : 'text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white'
             }`}
           >
             {item.icon}
@@ -48,10 +48,10 @@ const DashboardSidebar = ({ activeTab, setActiveTab, user, logout }) => {
         ))}
       </nav>
 
-      <div className="mt-10 pt-10 border-t border-gray-100">
+      <div className="mt-10 pt-10 border-t border-gray-100 dark:border-gray-800">
         <button
             onClick={logout}
-            className="w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-red-600 hover:bg-red-50 transition-all duration-200"
+            className="w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 transition-all duration-200"
         >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />

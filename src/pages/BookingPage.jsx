@@ -92,12 +92,12 @@ const BookingPage = () => {
   }
 
   return (
-    <div className="bg-gray-50 min-h-screen pt-28 pb-20">
+    <div className="bg-gray-50 dark:bg-gray-950 min-h-screen pt-28 pb-20 transition-colors duration-300">
       <Container>
         <div className="max-w-6xl mx-auto">
              <button 
                 onClick={() => navigate(-1)} 
-                className="mb-8 flex items-center gap-2 text-gray-500 hover:text-indigo-600 transition-colors"
+                className="mb-8 flex items-center gap-2 text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
              >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
@@ -109,7 +109,7 @@ const BookingPage = () => {
                 
                 {/* Car Details Column */}
                 <div className="lg:col-span-2 space-y-6">
-                    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                    <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden transition-colors duration-300">
                         <img 
                             src={car.image_url} 
                             alt={`${car.make} ${car.model}`}
@@ -118,8 +118,8 @@ const BookingPage = () => {
                         <div className="p-8">
                             <div className="flex justify-between items-start mb-4">
                                 <div>
-                                    <h1 className="text-3xl font-bold text-gray-900 mb-2">{car.make} {car.model}</h1>
-                                    <div className="flex items-center gap-2 text-gray-500">
+                                    <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">{car.make} {car.model}</h1>
+                                    <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
@@ -128,27 +128,27 @@ const BookingPage = () => {
                                     </div>
                                 </div>
                                 <div className="text-right">
-                                    <p className="text-3xl font-bold text-indigo-600">${car.price_per_day || 50}</p>
-                                    <p className="text-sm text-gray-500">per day</p>
+                                    <p className="text-3xl font-bold text-indigo-600 dark:text-indigo-400">${car.price_per_day || 50}</p>
+                                    <p className="text-sm text-gray-500 dark:text-gray-400">per day</p>
                                 </div>
                             </div>
 
-                            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-6 border-t border-b border-gray-100">
-                                <div className="text-center p-3 bg-gray-50 rounded-lg">
-                                    <p className="text-xs text-gray-500 mb-1">Transmission</p>
-                                    <p className="font-semibold text-gray-900">{car.transmission || "Automatic"}</p>
+                            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-6 border-t border-b border-gray-100 dark:border-gray-800">
+                                <div className="text-center p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                                    <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">Transmission</p>
+                                    <p className="font-semibold text-gray-900 dark:text-white">{car.transmission || "Automatic"}</p>
                                 </div>
-                                <div className="text-center p-3 bg-gray-50 rounded-lg">
-                                    <p className="text-xs text-gray-500 mb-1">Passngers</p>
-                                    <p className="font-semibold text-gray-900">{car.passengers || "5 Seats"}</p>
+                                <div className="text-center p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                                    <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">Passngers</p>
+                                    <p className="font-semibold text-gray-900 dark:text-white">{car.passengers || "5 Seats"}</p>
                                 </div>
-                                <div className="text-center p-3 bg-gray-50 rounded-lg">
-                                    <p className="text-xs text-gray-500 mb-1">Fuel Type</p>
-                                    <p className="font-semibold text-gray-900">{car.fuel || "Petrol"}</p>
+                                <div className="text-center p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                                    <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">Fuel Type</p>
+                                    <p className="font-semibold text-gray-900 dark:text-white">{car.fuel || "Petrol"}</p>
                                 </div>
-                                <div className="text-center p-3 bg-gray-50 rounded-lg">
-                                    <p className="text-xs text-gray-500 mb-1">Rating</p>
-                                    <p className="font-semibold text-gray-900 flex items-center justify-center gap-1">
+                                <div className="text-center p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                                    <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">Rating</p>
+                                    <p className="font-semibold text-gray-900 dark:text-white flex items-center justify-center gap-1">
                                         {car.rating || 4.5}
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-yellow-400">
                                             <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clipRule="evenodd" />
@@ -158,8 +158,8 @@ const BookingPage = () => {
                             </div>
                             
                             <div className="mt-6">
-                                <h3 className="font-bold text-gray-900 mb-2">Description</h3>
-                                <p className="text-gray-600 leading-relaxed">
+                                <h3 className="font-bold text-gray-900 dark:text-white mb-2">Description</h3>
+                                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                                     Experience the thrill of driving this {car.make} {car.model}. Perfect for weekend getaways or business trips, this vehicle offers a blend of performance and comfort.
                                 </p>
                             </div>
@@ -169,16 +169,16 @@ const BookingPage = () => {
 
                 {/* Booking Form Column */}
                 <div className="lg:col-span-1">
-                    <div className="bg-white rounded-2xl shadow-lg border border-indigo-100 p-6 sticky top-28">
-                        <h2 className="text-xl font-bold text-gray-900 mb-6">Book this Car</h2>
+                    <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg border border-indigo-100 dark:border-gray-800 p-6 sticky top-28 transition-colors duration-300">
+                        <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-6">Book this Car</h2>
                         
                         <form onSubmit={handleBooking} className="space-y-5">
                             <div className="space-y-2">
-                                <label className="text-sm font-medium text-gray-700">Pick-up Date</label>
+                                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Pick-up Date</label>
                                 <input 
                                     type="date" 
                                     required 
-                                    className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all"
+                                    className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all dark:text-white"
                                     value={startDate}
                                     onChange={(e) => setStartDate(e.target.value)}
                                     min={new Date().toISOString().split('T')[0]} // Min today
@@ -186,11 +186,11 @@ const BookingPage = () => {
                             </div>
                             
                             <div className="space-y-2">
-                                <label className="text-sm font-medium text-gray-700">Drop-off Date</label>
+                                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Drop-off Date</label>
                                 <input 
                                     type="date" 
                                     required
-                                    className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all"
+                                    className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all dark:text-white"
                                     value={endDate}
                                     onChange={(e) => setEndDate(e.target.value)}
                                     min={startDate || new Date().toISOString().split('T')[0]} 
@@ -198,18 +198,18 @@ const BookingPage = () => {
                             </div>
 
                             {totalCost > 0 && (
-                                <div className="py-4 border-t border-b border-gray-100 space-y-3">
-                                    <div className="flex justify-between text-gray-600">
+                                <div className="py-4 border-t border-b border-gray-100 dark:border-gray-800 space-y-3">
+                                    <div className="flex justify-between text-gray-600 dark:text-gray-400">
                                         <span>Rate</span>
                                         <span>${car.price_per_day} / day</span>
                                     </div>
-                                    <div className="flex justify-between text-gray-600">
+                                    <div className="flex justify-between text-gray-600 dark:text-gray-400">
                                         <span>Duration</span>
                                         <span>{totalCost / (parseInt(car.price_per_day) || 50)} days</span>
                                     </div>
-                                    <div className="flex justify-between font-bold text-lg text-gray-900 pt-2 border-t border-gray-100">
+                                    <div className="flex justify-between font-bold text-lg text-gray-900 dark:text-white pt-2 border-t border-gray-100 dark:border-gray-800">
                                         <span>Total</span>
-                                        <span className="text-indigo-600">${totalCost}</span>
+                                        <span className="text-indigo-600 dark:text-indigo-400">${totalCost}</span>
                                     </div>
                                 </div>
                             )}

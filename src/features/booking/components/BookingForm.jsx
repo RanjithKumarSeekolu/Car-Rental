@@ -18,19 +18,19 @@ const BookingForm = () => {
 
   return (
     <div className="pt-10 px-[5%]">
-       <div className="rounded-lg w-full shadow-lg p-8 border-b-8 border-indigo-800 bg-white">
+       <div className="rounded-lg w-full shadow-lg p-8 border-b-8 border-indigo-800 bg-white dark:bg-gray-900 transition-colors">
            <form className="flex flex-wrap gap-4 items-end">
                <div className="flex-1 min-w-[200px]">
-                   <label className="block mb-2 font-bold text-gray-700">Pick-up Location</label>
-                   <select className="w-full p-3 border rounded border-gray-300">
+                   <label className="block mb-2 font-bold text-gray-700 dark:text-gray-300">Pick-up Location</label>
+                   <select className="w-full p-3 border rounded-lg border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-indigo-500">
                        <option>Select Location</option>
                        {locations.map((loc, i) => <option key={i}>{loc.name}</option>)}
                    </select>
                </div>
                
                <div className="flex-1 min-w-[200px]">
-                   <label className="block mb-2 font-bold text-gray-700">Drop-off Location</label>
-                   <select className="w-full p-3 border rounded border-gray-300">
+                   <label className="block mb-2 font-bold text-gray-700 dark:text-gray-300">Drop-off Location</label>
+                   <select className="w-full p-3 border rounded-lg border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-indigo-500">
                        <option>Select Location</option>
                        {locations.map((loc, i) => <option key={i}>{loc.name}</option>)}
                    </select>
