@@ -7,26 +7,39 @@ import Input from "../../../components/ui/Input";
 const RegisterForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleRegistration = async (e) => {
     e.preventDefault();
+    setError("");
+    setLoading(true);
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      // Handle success (redirect or notification)
-    } catch (error) {
-      console.error("Registration error:", error.message);
+    } catch (err) {
+      console.error("Registration error:", err.message);
+      setError(err.message?.includes("email-already")
+        ? "An account with this email already exists."
+        : "Could not create account. Try a stronger password.");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <form onSubmit={handleRegistration} className="flex flex-col gap-4 w-full">
-      <h2 className="text-2xl font-bold text-center">Register</h2>
+      {error && (
+        <div className="text-sm text-red-600 bg-red-50 border border-red-100 px-3 py-2 rounded-[var(--radius-sm)]">
+          {error}
+        </div>
+      )}
       <Input
         label="Email"
         type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
+        disabled={loading}
       />
       <Input
         label="Password"
@@ -34,8 +47,12 @@ const RegisterForm = () => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         required
+        minLength={6}
+        disabled={loading}
       />
-      <Button type="submit" variant="primary">Register</Button>
+      <Button type="submit" variant="primary" disabled={loading} className="w-full">
+        {loading ? "Creating account..." : "Create account"}
+      </Button>
     </form>
   );
 };

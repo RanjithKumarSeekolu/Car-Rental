@@ -1,77 +1,133 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Button from '../../../components/ui/Button';
+import Loader from '../../../components/ui/Loader';
+import useCarStore from '../../../store/useCarStore';
+import { formatPrice } from '../../../utils/format';
+
+const isListed = (car) => car.isActive !== false && car.available !== false;
 
 const DashboardListings = () => {
-  // Mock Data
-  const listings = [
-    {
-       id: 101,
-       make: "Honda",
-       model: "City",
-       year: 2022,
-       price: 2000,
-       image: "https://imgd-ct.aeplcdn.com/664x415/n/cw/ec/134287/city-exterior-right-front-three-quarter-77.jpeg?isig=0&q=75",
-       status: "Active"
-    },
-    {
-       id: 102,
-       make: "Maruti Suzuki",
-       model: "Swift",
-       year: 2021,
-       price: 1500,
-       image: "https://imgd-ct.aeplcdn.com/664x415/n/cw/ec/162799/swift-exterior-right-front-three-quarter.jpeg?isig=0&q=75",
-       status: "In Review"
+  const { getHostCars, toggleListingStatus } = useCarStore();
+  const [listings, setListings] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+  const [savingId, setSavingId] = useState('');
+
+  useEffect(() => {
+    (async () => {
+      try {
+        setLoading(true);
+        const cars = await getHostCars();
+        setListings(cars);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    })();
+  }, [getHostCars]);
+
+  const handleToggle = async (car) => {
+    const next = !isListed(car);
+    setSavingId(car.id);
+    setError('');
+    setListings((prev) =>
+      prev.map((c) => (c.id === car.id ? { ...c, isActive: next, available: next } : c))
+    );
+    try {
+      await toggleListingStatus(car.id, next);
+    } catch (err) {
+      setListings((prev) =>
+        prev.map((c) => (c.id === car.id ? { ...c, isActive: !next, available: !next } : c))
+      );
+      setError(err.message || 'Could not update listing status');
+    } finally {
+      setSavingId('');
     }
-  ];
+  };
+
+  if (loading) return <Loader label="Loading listings..." />;
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white">My Listings</h2>
-        <Link to="/carHost">
-            <Button variant="primary">
-                + Add New Car
-            </Button>
-        </Link>
-      </div>
-      
+      <div className="mb-6">
+          <h2 className="text-2xl font-bold text-[var(--ink)]">My Listings</h2>
+          <p className="text-sm text-[var(--muted)] mt-1">Unlisted cars stay in your garage but hide from Browse.</p>
+        </div>
+
+      {error && <p className="text-red-600 text-sm">{error}</p>}
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {listings.map((car) => (
-            <div key={car.id} className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all group">
-                <div className="h-48 overflow-hidden relative">
-                    <img src={car.image} alt={`${car.make} ${car.model}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                    <div className="absolute top-3 right-3 bg-white/90 dark:bg-gray-900/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-gray-800 dark:text-white shadow-sm border border-gray-100 dark:border-gray-700">
-                        {car.status}
-                    </div>
-                </div>
-                <div className="p-5">
-                    <div className="flex justify-between items-start mb-2">
-                        <div>
-                            <h3 className="text-lg font-bold text-gray-900 dark:text-white">{car.make} {car.model}</h3>
-                            <p className="text-gray-500 dark:text-gray-400 text-sm">{car.year}</p>
-                        </div>
-                        <p className="text-indigo-600 dark:text-indigo-400 font-bold">₹ {car.price}<span className="text-xs text-gray-400 font-normal">/day</span></p>
-                    </div>
-                    
-                    <div className="flex gap-2 mt-4 pt-4 border-t border-gray-100 dark:border-gray-800">
-                        <button className="flex-1 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 rounded-lg transition-colors">
-                            Edit
-                        </button>
-                        <button className="flex-1 py-2 text-sm font-medium text-red-500 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors">
-                            Remove
-                        </button>
-                    </div>
-                </div>
+        {listings.map((car) => {
+          const listed = isListed(car);
+          return (
+          <div key={car.id} className="bg-[var(--surface)] border border-[var(--line)] rounded-[var(--radius)] overflow-hidden shadow-[var(--shadow)]">
+            <div className="relative h-48 overflow-hidden bg-[var(--bg)]">
+              {car.image_url ? (
+                <img
+                  src={car.image_url}
+                  alt={`${car.make} ${car.model}`}
+                  className={`w-full h-full object-cover ${listed ? '' : 'opacity-50'}`}
+                />
+              ) : null}
+              <span className={`absolute top-3 left-3 px-2.5 py-1 rounded-md text-[11px] font-bold ${
+                listed
+                  ? 'bg-[var(--accent-soft)] text-[var(--accent)]'
+                  : 'bg-[var(--surface)] text-[var(--muted)] border border-[var(--line)]'
+              }`}>
+                {listed ? 'Listed' : 'Unlisted'}
+              </span>
             </div>
-        ))}
-        
-        {/* Empty State / Add New Placeholder */}
-        <Link to="/carHost" className="border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-xl flex flex-col items-center justify-center text-gray-400 dark:text-gray-500 hover:border-indigo-400 dark:hover:border-indigo-500 hover:text-indigo-500 dark:hover:text-indigo-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all min-h-[300px] cursor-pointer">
-             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-12 h-12 mb-3">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-             </svg>
-             <span className="font-medium">List Another Car</span>
+            <div className="p-5">
+              <div className="flex justify-between items-start">
+                <div>
+                  <h3 className="text-lg font-bold text-[var(--ink)]">{car.make} {car.model}</h3>
+                  <p className="text-[var(--muted)] text-sm">{car.year}</p>
+                </div>
+                <p className="text-[var(--accent)] font-bold">
+                  {formatPrice(car.price_per_day)}
+                  <span className="text-xs text-[var(--muted)] font-normal">/day</span>
+                </p>
+              </div>
+
+              <div className="mt-4 flex items-center justify-between gap-3">
+                <label className="flex items-center gap-2 text-sm font-medium text-[var(--ink)] cursor-pointer">
+                  <input
+                    type="checkbox"
+                    className="sr-only"
+                    checked={listed}
+                    disabled={savingId === car.id}
+                    onChange={() => handleToggle(car)}
+                  />
+                  <span
+                    className={`relative inline-flex h-6 w-11 shrink-0 rounded-full transition-colors ${
+                      listed ? 'bg-[var(--accent)]' : 'bg-[var(--line)]'
+                    } ${savingId === car.id ? 'opacity-60' : ''}`}
+                  >
+                    <span
+                      className={`inline-block h-5 w-5 rounded-full bg-white shadow mt-0.5 transition-transform ${
+                        listed ? 'translate-x-[22px]' : 'translate-x-[2px]'
+                      }`}
+                    />
+                  </span>
+                  {listed ? 'Shown on Browse' : 'Hidden from Browse'}
+                </label>
+              </div>
+
+              <Link to={`/booking/${car.id}`} state={{ car }} className="inline-block mt-4 text-sm font-semibold text-[var(--accent)] hover:underline">
+                View listing →
+              </Link>
+            </div>
+          </div>
+          );
+        })}
+
+        <Link
+          to="/carHost"
+          className="border-2 border-dashed border-[var(--line)] rounded-[var(--radius)] flex flex-col items-center justify-center text-[var(--muted)] hover:border-[var(--accent)] hover:text-[var(--accent)] min-h-[300px] transition-colors"
+        >
+          <span className="text-3xl mb-2">+</span>
+          <span className="font-medium">{listings.length ? 'List another car' : 'List your first car'}</span>
         </Link>
       </div>
     </div>

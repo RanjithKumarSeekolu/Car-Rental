@@ -1,97 +1,84 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Person1 from "../assets/Person1.png";
 import Person2 from "../assets/Person2.png";
+import Button from "../components/ui/Button";
+import Container from "../components/ui/Container";
 
 const AboutPage = () => {
   return (
-    <div className="bg-gray-100 min-h-screen">
-      {/* Hero Section */}
-      <section className="bg-blue-400 py-20 text-white text-center">
-        <div className="container mx-auto">
-          <h1 className="text-4xl font-bold mb-4">About RentNHost</h1>
-          <p className="text-lg">
-            Your go-to platform for renting cars or hosting your own car.
+    <div className="bg-[var(--bg)] min-h-screen">
+      <section className="bg-[var(--navy)] pt-32 pb-20 text-[var(--on-navy)]">
+        <Container className="text-center max-w-3xl">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--accent)] mb-4">About</p>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">About RentNHost</h1>
+          <p className="text-lg text-[var(--on-navy)]/80">
+            Your go-to platform for renting cars or hosting your own.
           </p>
-        </div>
+        </Container>
       </section>
 
-      {/* About Us Section */}
       <section className="py-16">
-        <div className="container mx-auto">
-          <h2 className="text-3xl font-bold mb-8">Who We Are</h2>
-          <p className="text-lg">
-            We are passionate about providing a seamless experience for car
-            renters and hosts alike. Our platform connects people looking for
-            reliable transportation with those willing to share their cars.
+        <Container className="max-w-3xl">
+          <h2 className="text-3xl font-bold text-[var(--ink)] mb-4">Who we are</h2>
+          <p className="text-lg text-[var(--muted)] leading-relaxed">
+            We are passionate about a seamless experience for renters and hosts.
+            RentNHost connects people who need reliable cars with owners ready to share theirs.
           </p>
-        </div>
+        </Container>
       </section>
 
-      {/* Meet the Team Section */}
-      <section className="bg-gray-200 py-16">
-        <div className="container mx-auto">
-          <h2 className="text-3xl font-bold mb-8 text-center">Meet the Team</h2>
-          <div className="flex flex-wrap justify-center">
-            <div className="m-4">
-              <img
-                src={Person1}
-                alt="Team Member 1"
-                className="rounded-full w-32 h-32 mb-4 mx-auto"
-              />
-              <h3 className="text-xl font-bold">John Doe</h3>
-              <p className="text-gray-600">CEO & Co-founder</p>
+      <section className="py-16 border-y border-[var(--line)] bg-[var(--surface)]">
+        <Container>
+          <h2 className="text-3xl font-bold text-[var(--ink)] mb-10 text-center">Meet the team</h2>
+          <div className="flex flex-wrap justify-center gap-10">
+            <div className="text-center">
+              <img src={Person1} alt="John Doe" className="rounded-full w-32 h-32 mb-4 mx-auto object-cover border-2 border-[var(--line)]" />
+              <h3 className="text-xl font-bold text-[var(--ink)]">John Doe</h3>
+              <p className="text-[var(--muted)]">CEO & Co-founder</p>
             </div>
-            <div className="m-4">
-              <img
-                src={Person2}
-                alt="Team Member 2"
-                className="rounded-full w-32 h-32 mb-4 mx-auto"
-              />
-              <h3 className="text-xl font-bold">Samantha</h3>
-              <p className="text-gray-600">CTO & Co-founder</p>
+            <div className="text-center">
+              <img src={Person2} alt="Samantha" className="rounded-full w-32 h-32 mb-4 mx-auto object-cover border-2 border-[var(--line)]" />
+              <h3 className="text-xl font-bold text-[var(--ink)]">Samantha</h3>
+              <p className="text-[var(--muted)]">CTO & Co-founder</p>
             </div>
           </div>
-        </div>
+        </Container>
       </section>
 
-      {/* Testimonials Section */}
       <section className="py-16">
-        <div className="container mx-auto">
-          <h2 className="text-3xl font-bold mb-8 text-center">
-            What Our Users Say
-          </h2>
-          <div className="max-w-lg mx-auto">
-            <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-              <p className="text-lg mb-4">
-                "RentNHost made it so easy for me to find a car for my weekend
-                trip. Highly recommended!"
+        <Container className="max-w-2xl">
+          <h2 className="text-3xl font-bold text-[var(--ink)] mb-8 text-center">What our users say</h2>
+          <div className="space-y-4">
+            <blockquote className="bg-[var(--surface)] rounded-[var(--radius)] border border-[var(--line)] p-6 shadow-[var(--shadow)]">
+              <p className="text-lg text-[var(--ink)] mb-3">
+                &ldquo;RentNHost made it so easy for me to find a car for my weekend trip. Highly recommended!&rdquo;
               </p>
-              <p className="text-gray-600 text-right">- Alice Johnson</p>
-            </div>
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <p className="text-lg mb-4">
-                "I've been hosting my car on RentNHost for months now, and it's
-                been a great way to earn extra income."
+              <footer className="text-[var(--muted)] text-right">— Alice Johnson</footer>
+            </blockquote>
+            <blockquote className="bg-[var(--surface)] rounded-[var(--radius)] border border-[var(--line)] p-6 shadow-[var(--shadow)]">
+              <p className="text-lg text-[var(--ink)] mb-3">
+                &ldquo;I&apos;ve been hosting my car on RentNHost for months now, and it&apos;s been a great way to earn extra income.&rdquo;
               </p>
-              <p className="text-gray-600 text-right">- Michael Lee</p>
-            </div>
+              <footer className="text-[var(--muted)] text-right">— Michael Lee</footer>
+            </blockquote>
           </div>
-        </div>
+        </Container>
       </section>
 
-      {/* Contact Us Section */}
-      <section className="py-16 bg-gray-300">
-        <div className="container mx-auto">
-          <h2 className="text-3xl font-bold mb-8 text-center">Contact Us</h2>
-          <p className="text-lg text-center">
-            If you have any questions or feedback, feel free to reach out to us
-            at{" "}
-            <a href="mailto:info@rentnhost.com" className="text-blue-500">
+      <section className="py-16 bg-[var(--navy)] text-[var(--on-navy)]">
+        <Container className="text-center max-w-xl">
+          <h2 className="text-3xl font-bold mb-4">Get in touch</h2>
+          <p className="text-[var(--on-navy)]/80 mb-6">
+            Questions or feedback? Email{" "}
+            <a href="mailto:info@rentnhost.com" className="text-[var(--accent)] font-semibold hover:underline">
               info@rentnhost.com
             </a>
-            .
           </p>
-        </div>
+          <Link to="/contact">
+            <Button variant="accent">Contact us</Button>
+          </Link>
+        </Container>
       </section>
     </div>
   );

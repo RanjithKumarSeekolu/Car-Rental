@@ -23,6 +23,7 @@ const Booking = () => {
       try {
         const response = await getLocations();
 
+        console.log("response = ", response);
         setCarRentalLocations(response);
         setLoading(false);
       } catch (err) {

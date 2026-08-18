@@ -3,17 +3,19 @@ import { cn } from "../../utils/cn";
 
 const Button = React.forwardRef(({ className, variant = "primary", size = "md", ...props }, ref) => {
   const variants = {
-    primary: "bg-indigo-800 text-white hover:bg-blue-700 shadow-md",
-    secondary: "bg-gray-200 text-black hover:bg-indigo-800 hover:text-white dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600",
-    outline: "border border-indigo-800 text-indigo-800 hover:bg-indigo-50 dark:border-indigo-400 dark:text-indigo-400 dark:hover:bg-indigo-950",
-    ghost: "hover:bg-gray-100 text-gray-700 dark:text-gray-300 dark:hover:bg-gray-800",
+    // Use fixed --navy / --on-navy so dark mode never washes out label text
+    primary: "btn-navy",
+    accent: "btn-accent",
+    secondary: "bg-[var(--surface)] text-[var(--ink)] border border-[var(--line)] hover:border-[var(--navy)]",
+    outline: "border border-[var(--navy)] text-[var(--navy)] dark:border-[var(--accent)] dark:text-[var(--accent)] hover:bg-[var(--navy)] hover:text-[var(--on-navy)] dark:hover:bg-[var(--accent)] dark:hover:text-[var(--accent-text)]",
+    ghost: "text-[var(--muted)] hover:text-[var(--ink)] hover:bg-[var(--bg)]",
     danger: "bg-red-500 text-white hover:bg-red-600",
   };
 
   const sizes = {
     sm: "px-3 py-1.5 text-sm",
     md: "px-5 py-2.5 text-base",
-    lg: "px-8 py-3 text-lg",
+    lg: "px-8 py-3.5 text-base",
     icon: "p-2",
   };
 
@@ -21,7 +23,7 @@ const Button = React.forwardRef(({ className, variant = "primary", size = "md", 
     <button
       ref={ref}
       className={cn(
-        "rounded-md font-medium transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2",
+        "rounded-[var(--radius-sm)] font-semibold transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2",
         variants[variant],
         sizes[size],
         className

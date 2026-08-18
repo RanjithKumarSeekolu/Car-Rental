@@ -3,9 +3,136 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
+  --bg: #F3F5F7;
+  --surface: #FFFFFF;
+  --ink: #0B1F3A;
+  --muted: #5C6B7A;
+  --accent: #FF5C1A;
+  --accent-soft: #FFE6D9;
+  --brand: #0B1F3A;
+  --brand-deep: #0B1F3A;
+  --line: #E4E9EF;
+  --success: #1F9D55;
+  /* Fixed action colors — never flip with theme */
+  --navy: #0B1F3A;
+  --navy-hover: #16325A;
+  --on-navy: #FFFFFF;
+  --accent-text: #FFFFFF;
+  --shadow: 0 12px 40px rgba(11, 31, 58, 0.08);
+  --shadow-lg: 0 20px 50px rgba(11, 31, 58, 0.12);
+  --radius: 16px;
+  --radius-sm: 10px;
+}
+
+.dark {
+  --bg: #0A1424;
+  --surface: #111C2E;
+  --ink: #F5F7FA;
+  --muted: #9AA8B5;
+  --accent: #FF6A33;
+  --accent-soft: #3A2218;
+  --brand: #F5F7FA;
+  --brand-deep: #FF5C1A;
+  --line: #243247;
+  --shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.45);
+  /* Keep navy buttons readable in dark mode */
+  --navy: #0B1F3A;
+  --navy-hover: #1A3A66;
+  --on-navy: #FFFFFF;
+  --accent-text: #FFFFFF;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
-  font-family: 'Outfit', sans-serif;
+  margin: 0;
+  font-family: 'Outfit', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+/* Keep base link styles in @layer so Tailwind text-* utilities can override */
+@layer base {
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+/* Hard contrast for CTA links/buttons — wins over inherited <a> color */
+.btn-navy {
+  background: var(--navy) !important;
+  color: var(--on-navy) !important;
+}
+
+.btn-navy:hover {
+  background: var(--navy-hover) !important;
+  color: var(--on-navy) !important;
+}
+
+.btn-accent {
+  background: var(--accent) !important;
+  color: var(--accent-text) !important;
+}
+
+.btn-accent:hover {
+  filter: brightness(1.08);
+  color: var(--accent-text) !important;
+}
+
+.pickup-map .leaflet-container {
+  height: 100%;
+  width: 100%;
+  background: var(--bg);
+}
+
+.pickup-map .leaflet-pane,
+.pickup-map .leaflet-top,
+.pickup-map .leaflet-bottom {
+  z-index: auto;
+}
+
+.pickup-map .leaflet-marker-pane {
+  z-index: 600;
+}
+
+.pickup-map .leaflet-overlay-pane svg,
+.pickup-map .leaflet-marker-icon,
+.pickup-map .pickup-pin svg {
+  max-width: none;
+}
+
+.pickup-pin {
+  background: none !important;
+  border: none !important;
+}
+
+.pickup-pin svg {
+  display: block;
+  width: 36px;
+  height: 48px;
+  filter: drop-shadow(0 2px 4px rgba(11, 31, 58, 0.45));
+}
+
+.pickup-pin__dot {
+  position: absolute;
+  left: 50%;
+  bottom: 2px;
+  width: 10px;
+  height: 10px;
+  margin-left: -5px;
+  border-radius: 999px;
+  background: rgba(255, 92, 26, 0.35);
 }

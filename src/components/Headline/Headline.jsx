@@ -1,79 +1,100 @@
 import React from "react";
-import map from "../../assets/backdrop.png";
 import car from "../../assets/car.png";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const Headline = () => {
   return (
-    <div className="grid grid-cols-1 pb-8 md:grid-cols-2 gap-8 pt-28 md:pt-10 px-[5%] items-center overflow-hidden min-h-0 md:min-h-[75vh]">
-      <div className="flex flex-col justify-center z-10">
-        <div className="text-left">
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-2xl font-bold text-left text-gray-900 dark:text-white"
-          >
-            Find Your Ideal Car Rental
-          </motion.div>
+    <section className="relative bg-[var(--bg)] pt-24 md:pt-28 pb-24 md:pb-28 overflow-hidden">
+      {/* subtle watermark */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute right-[-5%] top-1/2 -translate-y-1/2 text-[14rem] md:text-[18rem] font-bold text-[var(--ink)]/[0.03] leading-none select-none hidden md:block"
+      >
+        CAR
+      </div>
 
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-6xl font-bold my-6 text-left leading-tight text-gray-900 dark:text-white"
+      <div className="max-w-7xl mx-auto px-5 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-4 items-center relative z-10">
+        <div className="relative flex flex-col items-start text-left max-w-[32rem]">
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-[0.95rem] font-semibold text-[var(--ink)]"
           >
-            Easy <span className="text-blue-800 dark:text-blue-400">Renting</span> and
+            Find Your Ideal Car Rental.
+          </motion.p>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.05 }}
+            className="mt-3 text-[2.5rem] sm:text-5xl lg:text-[3.4rem] font-bold text-[var(--ink)] leading-[1.15] tracking-tight"
+          >
+            Easy{' '}
+            <span className="text-[var(--accent)]">Renting</span>
+            {' '}and
             <br />
-            Secure car <span className="text-blue-800 dark:text-blue-400">Hosting</span>
-          </motion.div>
+            Secure car{' '}
+            <span className="text-[var(--accent)]">Hosting</span>
+          </motion.h1>
 
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-gray-600 dark:text-gray-300 mb-8 text-lg text-left"
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.15 }}
+            className="mt-4 text-base sm:text-lg text-[var(--muted)] leading-relaxed"
           >
             Search and discover the best car rental options with ease.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.25 }}
+            className="mt-8 flex flex-row flex-wrap items-center justify-start gap-3"
+          >
+            <Link
+              to="/allCars"
+              className="btn-navy inline-flex items-center justify-center px-7 py-3.5 rounded-[var(--radius-sm)] font-semibold transition"
+            >
+              Find your best match.
+            </Link>
+            <Link
+              to="/carHost"
+              className="inline-flex items-center justify-center px-7 py-3.5 rounded-[var(--radius-sm)] bg-[var(--surface)] !text-[var(--ink)] font-semibold border border-[var(--line)] hover:border-[var(--navy)] transition"
+            >
+              Host Your Car.
+            </Link>
           </motion.div>
         </div>
 
-        <motion.div 
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex flex-wrap gap-4"
+        <motion.div
+          initial={{ opacity: 0, x: 48 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.75, ease: "easeOut" }}
+          className="relative flex items-center justify-center lg:justify-end min-h-[260px] md:min-h-[360px]"
         >
-          <button className="bg-blue-800 dark:bg-blue-700 py-3 px-5 font-bold text-white hover:scale-105 transition-transform duration-200 rounded-sm">
-            Find your best match
-          </button>
-          <Link to="carHost">
-            <button className="border-b-2 border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-800 text-black dark:text-white font-bold py-3 px-8 flex items-center hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 rounded-sm">
-              Host Your Car
-              <img
-                className="pl-2 dark:invert" 
-                width="25"
-                height="20"
-                src="https://img.icons8.com/ios-filled/100/car-rental.png"
-                alt="car-rental"
-              />
-            </button>
-          </Link>
+          <div
+            aria-hidden
+            className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 w-[78%] max-w-[380px] aspect-[4/5] rounded-[2rem] bg-[var(--accent)] overflow-hidden shadow-[var(--shadow-lg)]"
+          >
+            <div
+              className="absolute inset-0 opacity-25"
+              style={{
+                backgroundImage:
+                  "repeating-linear-gradient(-12deg, transparent, transparent 10px, rgba(255,255,255,0.4) 10px, rgba(255,255,255,0.4) 12px)",
+              }}
+            />
+          </div>
+
+          <img
+            src={car}
+            alt="Featured rental car"
+            className="relative z-10 w-[110%] max-w-[600px] -ml-4 lg:-ml-12 drop-shadow-[0_25px_50px_rgba(11,31,58,0.28)] object-contain"
+          />
         </motion.div>
       </div>
-
-      <div className="hidden md:flex relative justify-center md:justify-end mt-8 md:mt-0 scale-[1.2]">
-        <motion.img 
-          initial={{ opacity: 0, x: 100 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="w-full max-w-[600px] h-auto object-contain dark:brightness-90 transition-[filter] duration-300" 
-          src={car} 
-          alt="car" 
-        />
-      </div>
-    </div>
+    </section>
   );
 };
 

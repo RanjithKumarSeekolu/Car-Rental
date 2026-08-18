@@ -1,45 +1,49 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Logo from "../../assets/Logo.png";
+import appIcon from "../../assets/app-icon.png";
 
 const Footer = () => {
   return (
-    <div className="w-full grid grid-cols-2 md:grid-cols-5 gap-8 bg-gray-300 dark:bg-gray-900 py-12 px-[6%] text-black dark:text-gray-300 cursor-pointer transition-colors duration-300">
-      <div className="col-span-2 md:col-span-1 flex justify-start md:justify-center items-start">
-        <Link to="/">
-          <img src={Logo} alt={"renNHost"} className="w-[150px] md:w-[200px]" />
-        </Link>
+    <footer className="bg-[var(--navy)] text-[var(--on-navy)]/80">
+      <div className="max-w-7xl mx-auto px-5 md:px-8 py-14 grid grid-cols-2 md:grid-cols-5 gap-10">
+        <div className="col-span-2 md:col-span-1">
+          <Link to="/" className="inline-flex items-center gap-2.5">
+            <img
+              src={appIcon}
+              alt=""
+              className="h-10 w-10 rounded-[9px] object-cover ring-1 ring-white/15"
+            />
+            <span className="text-lg font-bold tracking-tight text-[var(--on-navy)]">
+              RentNHost
+            </span>
+          </Link>
+          <p className="mt-4 text-sm text-[var(--on-navy)]/60 leading-relaxed">
+            Easy renting. Secure hosting.
+          </p>
+        </div>
+
+        {[
+          { title: "Product", links: [["Cars", "/allCars"], ["Host", "/carHost"], ["Dashboard", "/dashboard"]] },
+          { title: "Company", links: [["About", "/about-us"], ["Contact", "/contact-us"]] },
+          { title: "Legal", links: [["Terms", "#"], ["Privacy", "#"]] },
+          { title: "Social", links: [["LinkedIn", "#"], ["Twitter", "#"]] },
+        ].map((col) => (
+          <div key={col.title}>
+            <p className="font-bold text-[var(--on-navy)] mb-3">{col.title}</p>
+            <div className="flex flex-col gap-2 text-sm text-[var(--on-navy)]/75">
+              {col.links.map(([label, href]) => (
+                <Link key={label} to={href} className="hover:text-[var(--accent)] transition-colors">
+                  {label}
+                </Link>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
-      
-      <div className="flex flex-col space-y-3">
-        <div className="font-bold text-lg mb-1 cursor-auto text-indigo-900 dark:text-indigo-400">Company</div>
-        <div className="hover:text-indigo-700 dark:hover:text-indigo-400 transition-colors">About Us</div>
-        <div className="hover:text-indigo-700 dark:hover:text-indigo-400 transition-colors">Category</div>
-        <div className="hover:text-indigo-700 dark:hover:text-indigo-400 transition-colors">Resources</div>
+      <div className="border-t border-[var(--on-navy)]/10 py-5 text-center text-xs text-[var(--on-navy)]/45">
+        © {new Date().getFullYear()} RentNHost. All rights reserved.
       </div>
-      
-      <div className="flex flex-col space-y-3">
-        <div className="font-bold text-lg mb-1 cursor-auto text-indigo-900 dark:text-indigo-400">Developer</div>
-        <div className="hover:text-indigo-700 dark:hover:text-indigo-400 transition-colors">Github</div>
-        <div className="hover:text-indigo-700 dark:hover:text-indigo-400 transition-colors">Linkedin</div>
-        <div className="hover:text-indigo-700 dark:hover:text-indigo-400 transition-colors">Leetcode</div>
-      </div>
-      
-      <div className="flex flex-col space-y-3">
-        <div className="font-bold text-lg mb-1 cursor-auto text-indigo-900 dark:text-indigo-400">Social</div>
-        <div className="hover:text-indigo-700 dark:hover:text-indigo-400 transition-colors">Linkedin</div>
-        <div className="hover:text-indigo-700 dark:hover:text-indigo-400 transition-colors">Twitter</div>
-        <div className="hover:text-indigo-700 dark:hover:text-indigo-400 transition-colors">Youtube</div>
-        <div className="hover:text-indigo-700 dark:hover:text-indigo-400 transition-colors">Quora</div>
-      </div>
-      
-      <div className="flex flex-col space-y-3">
-        <div className="font-bold text-lg mb-1 cursor-auto text-indigo-900 dark:text-indigo-400">Legal</div>
-        <div className="hover:text-indigo-700 dark:hover:text-indigo-400 transition-colors">Terms of services</div>
-        <div className="hover:text-indigo-700 dark:hover:text-indigo-400 transition-colors">Privacy Policy</div>
-        <div className="hover:text-indigo-700 dark:hover:text-indigo-400 transition-colors">Return Policy</div>
-      </div>
-    </div>
+    </footer>
   );
 };
 

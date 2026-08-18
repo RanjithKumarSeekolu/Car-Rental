@@ -16,18 +16,12 @@ const useThemeStore = create((set, get) => ({
   },
 
   initialize: () => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      set({ theme: savedTheme });
-      if (savedTheme === 'dark') {
-        document.documentElement.classList.add('dark');
-      }
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    set({ theme: savedTheme });
+    if (savedTheme === 'dark') {
+      document.documentElement.classList.add('dark');
     } else {
-      // Check system preference
-      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        set({ theme: 'dark' });
-        document.documentElement.classList.add('dark');
-      }
+      document.documentElement.classList.remove('dark');
     }
   }
 }));

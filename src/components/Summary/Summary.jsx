@@ -1,30 +1,33 @@
 import React from "react";
-import cars from "../../assets/cars.jpg";
+import { Link } from "react-router-dom";
 
 const Summary = () => {
   return (
-    <div className="flex px-[6%] py-24 flex-row flex-wrap flex-grow bg-white dark:bg-gray-900 transition-colors duration-300 justify-center gap-12 items-center">
-      <div className="flex-1 min-w-[300px] max-w-[600px]">
-        <img src={cars} alt="cars" className="rounded-xl w-full h-auto shadow-2xl dark:shadow-indigo-900/20 opacity-90 dark:opacity-80 transition-opacity" />
+    <section className="py-16 md:py-20 px-5 md:px-8">
+      <div className="max-w-7xl mx-auto rounded-[1.5rem] bg-[var(--navy)] text-[var(--on-navy)] px-8 py-12 md:px-16 md:py-16 flex flex-col md:flex-row md:items-center md:justify-between gap-8 overflow-hidden relative">
+        <div
+          aria-hidden
+          className="absolute -right-16 -top-16 w-64 h-64 rounded-full bg-[var(--accent)] opacity-25 blur-2xl"
+        />
+        <div className="relative z-10 max-w-xl">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--accent)] mb-3">
+            Become a host
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold leading-tight tracking-tight text-[var(--on-navy)]">
+            Own a car? Put it to work.
+          </h2>
+          <p className="mt-3 text-[var(--on-navy)]/75 text-lg">
+            Set a daily rate. Approve who drives. Get paid for the days it&apos;s out.
+          </p>
+        </div>
+        <Link
+          to="/carHost"
+          className="btn-accent relative z-10 inline-flex items-center justify-center px-8 py-3.5 rounded-[var(--radius-sm)] font-bold transition shrink-0"
+        >
+          Host your car
+        </Link>
       </div>
-      <div className="flex flex-col text-left flex-1 min-w-[300px]">
-        <div className="text-blue-800 dark:text-blue-400 font-semibold py-2 text-2xl">
-          About Us
-        </div>
-        <div className="font-bold text-3xl pb-6 leading-tight text-gray-900 dark:text-white">
-          More than 150+ special collection <br className="hidden md:block"/> cars
-        </div>
-        <div className="text-gray-600 dark:text-gray-300 pb-8 text-lg leading-relaxed">
-          Get the car of your dreams with the installments of your 
-          choice. There are various attractive offers from Moladin 
-          through our collaboration with various trusted leasing 
-          partners.
-        </div>
-        <button className="bg-blue-800 dark:bg-blue-700 hover:bg-blue-900 dark:hover:bg-blue-600 p-4 rounded-lg w-[200px] text-white font-bold transition-colors shadow-lg hover:shadow-xl hover:-translate-y-0.5">
-          See all cars
-        </button>
-      </div>
-    </div>
+    </section>
   );
 };
 

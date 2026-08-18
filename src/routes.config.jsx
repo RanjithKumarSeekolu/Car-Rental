@@ -13,6 +13,7 @@ const Dashboard = lazy(() => import("./pages/Dashboard"));
 const CarHost = lazy(() => import("./pages/CarHost"));
 const CategoryCars = lazy(() => import("./pages/CategoryCars"));
 const Register = lazy(() => import("./pages/Register"));
+const Login = lazy(() => import("./pages/Login"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const BookingPage = lazy(() => import("./pages/BookingPage"));
 
@@ -57,6 +58,10 @@ export const AppRouter = createBrowserRouter([
       {
         path: "/booking/:carId",
         element: <PageWrapper><BookingPage /></PageWrapper>,
+      },
+      {
+        path: "/login",
+        element: <PageWrapper><Login /></PageWrapper>,
       },
       {
         path: "/registerUser",

@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useMemo } from "react";
+import { useSearchParams, Link } from "react-router-dom";
 import useCarStore from "../../../store/useCarStore";
 import CarCard from "./CarCard";
 import Loader from "../../../components/ui/Loader";
@@ -6,180 +7,124 @@ import Container from "../../../components/ui/Container";
 import CarFiltersSidebar from "./CarFiltersSidebar";
 
 const AllCarsList = () => {
-    const { cars, loading, getAllCars } = useCarStore();
-    
-    // Filters State
-    const [searchTerm, setSearchTerm] = useState("");
-    const [isFilterOpen, setIsFilterOpen] = useState(false);
-    const [filters, setFilters] = useState({
-        priceRange: 500,
-        categories: [],
-        transmissions: [],
-        fuels: [],
-        seats: []
-    });
+  const [searchParams] = useSearchParams();
+  const cityIdParam = searchParams.get("cityId") || "";
+  const cityParam = searchParams.get("city") || "";
+  const fromParam = searchParams.get("from") || "";
+  const toParam = searchParams.get("to") || "";
 
-    useEffect(() => {
-        getAllCars();
-    }, [getAllCars]);
-    
-    // 1. Flatten and Augment Data
-    // We inject stable mock attributes because the real API lacks them
-    const allCars = useMemo(() => {
-        if (!cars) return [];
-        let flatCars = [];
-        
-        if (cars.length > 0 && cars[0].cars) {
-            flatCars = cars.flatMap(cat => cat.cars || []);
-        } else {
-            flatCars = Array.isArray(cars) ? cars : [];
+  const { cars, loading, getAllCars } = useCarStore();
+  const [searchTerm, setSearchTerm] = useState("");
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [filters, setFilters] = useState({
+    priceRange: 20000,
+    categories: [],
+    transmissions: [],
+    fuels: [],
+    seats: [],
+  });
+
+  useEffect(() => {
+    const params = {};
+    if (cityIdParam) params.cityId = cityIdParam;
+    else if (cityParam) params.city = cityParam;
+    getAllCars(params);
+  }, [getAllCars, cityIdParam, cityParam]);
+
+  const allCars = useMemo(() => (Array.isArray(cars) ? cars : []), [cars]);
+
+  const filteredCars = useMemo(() => {
+    return allCars.filter((car) => {
+      if (searchTerm) {
+        const q = searchTerm.toLowerCase();
+        if (!car.make?.toLowerCase().includes(q) && !car.model?.toLowerCase().includes(q)) {
+          return false;
         }
+      }
+      if (parseFloat(car.price_per_day) > filters.priceRange) return false;
+      if (filters.categories.length && !filters.categories.includes(car.category)) return false;
+      if (filters.transmissions.length && !filters.transmissions.includes(car.transmission)) return false;
+      if (filters.fuels.length && !filters.fuels.includes(car.fuel)) return false;
+      return true;
+    });
+  }, [allCars, searchTerm, filters]);
 
-        const categoriesList = ["Sedan", "SUV", "Luxury", "Hatchback", "Convertible", "Coupe", "Minivan", "Sports Car", "Truck"];
+  const clearFilters = () => {
+    setFilters({ priceRange: 20000, categories: [], transmissions: [], fuels: [], seats: [] });
+    setSearchTerm("");
+    setIsFilterOpen(false);
+  };
 
-        return flatCars.map((car, index) => {
-             // Deterministic mock data assignment based on index/id
-             const idNum = (car._id || car.id || index).toString().charCodeAt(0) + index;
-             // Mock price conversion to USD (approx) or just a random reasonable daily rate $50-$300
-             const mockPrice = Math.floor((parseInt(car.price_per_day) || 2000) / 20) + 40; 
+  const cityLabel = cityParam || (cityIdParam
+    ? cityIdParam.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())
+    : "");
 
-             return {
-                 ...car,
-                 id: car._id || car.id || `mock-car-${index}`,
-                 // Overwrite/Add price for consistent USD filtering/display
-                 price_per_day: mockPrice, 
-                 original_price: car.price_per_day, // keep ref if needed
-                 category: categoriesList[idNum % categoriesList.length],
-                 transmission: idNum % 2 === 0 ? "Automatic" : "Manual",
-                 fuel: ["Petrol", "Diesel", "Electric", "Hybrid"][idNum % 4],
-                 seats: idNum % 3 === 0 ? "7+ seats" : (idNum % 5 === 0 ? "2-4 seats" : "5 seats")
-             };
-        });
-    }, [cars]);
+  if (loading) return <Loader label="Loading cars..." />;
 
+  return (
+    <Container className="py-12 bg-[var(--bg)] min-h-screen pt-28">
+      <div className="flex flex-col lg:flex-row gap-8">
+        <CarFiltersSidebar
+          filters={filters}
+          setFilters={setFilters}
+          clearFilters={clearFilters}
+          isOpen={isFilterOpen}
+          onClose={() => setIsFilterOpen(false)}
+        />
 
-    // 2. Filter Logic
-    const filteredCars = useMemo(() => {
-        return allCars.filter(car => {
-            // Search
-            if (searchTerm) {
-                const lowerTerm = searchTerm.toLowerCase();
-                if (!car.make?.toLowerCase().includes(lowerTerm) && !car.model?.toLowerCase().includes(lowerTerm)) {
-                    return false;
-                }
-            }
+        <div className="flex-1">
+          <h1 className="text-3xl font-bold text-[var(--ink)] mb-2">
+            {cityLabel ? `Cars in ${cityLabel}` : "Browse cars"}
+          </h1>
+          <p className="text-[var(--muted)] mb-2">
+            {fromParam && toParam
+              ? `${fromParam} → ${toParam}`
+              : "Find the perfect car for your journey"}
+          </p>
+          {(cityIdParam || cityParam) && (
+            <Link to="/allCars" className="text-sm font-semibold text-[var(--accent)] hover:underline mb-4 inline-block">
+              Clear location filter
+            </Link>
+          )}
 
-            // Price (compare against mock dollar price)
-            if (parseFloat(car.price_per_day) > filters.priceRange) return false;
+          <div className="flex gap-4 mb-6 mt-4">
+            <input
+              type="text"
+              className="block w-full max-w-md px-4 py-3 border border-[var(--line)] rounded-xl bg-[var(--surface)] text-[var(--ink)] outline-none focus:ring-2 focus:ring-[var(--accent)]"
+              placeholder="Search by make or model..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            <button
+              onClick={() => setIsFilterOpen(true)}
+              className="lg:hidden px-4 py-3 rounded-xl border border-[var(--line)] bg-[var(--surface)] font-medium"
+            >
+              Filters
+            </button>
+          </div>
 
-            // Categories
-            if (filters.categories.length > 0 && !filters.categories.includes(car.category)) return false;
+          <div className="mb-4 text-sm font-semibold text-[var(--ink)]">
+            Showing {filteredCars.length} cars
+          </div>
 
-            // Transmission
-            if (filters.transmissions.length > 0 && !filters.transmissions.includes(car.transmission)) return false;
-
-            // Fuel
-            if (filters.fuels.length > 0 && !filters.fuels.includes(car.fuel)) return false;
-
-            // Seats
-            if (filters.seats.length > 0 && !filters.seats.includes(car.seats)) return false;
-
-            return true;
-        });
-    }, [allCars, searchTerm, filters]);
-
-
-    const clearFilters = () => {
-        setFilters({
-            priceRange: 500,
-            categories: [],
-            transmissions: [],
-            fuels: [],
-            seats: []
-        });
-        setSearchTerm("");
-        setIsFilterOpen(false); // Close drawer on reset on mobile
-    };
-
-    if (loading) return <Loader />;
-
-    return (
-        <Container className="py-12 bg-gray-50 dark:bg-gray-950 min-h-screen transition-colors duration-300">
-             <div className="flex flex-col lg:flex-row gap-8">
-                {/* Sidebar */}
-                <CarFiltersSidebar 
-                    filters={filters} 
-                    setFilters={setFilters} 
-                    clearFilters={clearFilters}
-                    isOpen={isFilterOpen}
-                    onClose={() => setIsFilterOpen(false)}
-                />
-
-                {/* Main Content */}
-                <div className="flex-1 pt-12">
-                    <div className="mb-6">
-                        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Browse Cars</h1>
-                        <p className="text-gray-500 dark:text-gray-400 mb-6">Find the perfect car for your journey</p>
-                        
-                        {/* Wrapper for Search and Mobile Filter Button */}
-                        <div className="flex gap-4">
-                            {/* Search Input inline */}
-                            <div className="relative max-w-md flex-grow">
-                                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <svg className="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
-                                    </svg>
-                                </div>
-                                <input
-                                    type="text"
-                                    className="block w-full pl-10 pr-3 py-3 border border-gray-200 dark:border-gray-700 rounded-xl leading-5 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all shadow-sm"
-                                    placeholder="Search by make or model..."
-                                    value={searchTerm}
-                                    onChange={(e) => setSearchTerm(e.target.value)}
-                                />
-                            </div>
-
-                            {/* Mobile Filter Trigger Button */}
-                            <button 
-                                onClick={() => setIsFilterOpen(true)}
-                                className="lg:hidden flex items-center gap-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 px-4 py-3 rounded-xl shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
-                            >
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-gray-600 dark:text-gray-300">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
-                                </svg>
-                                <span className="font-medium text-gray-700 dark:text-gray-200">Filters</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div className="mb-4 text-sm font-semibold text-gray-700 dark:text-gray-300">
-                        Showing {filteredCars.length} cars
-                    </div>
-
-                    {filteredCars.length > 0 ? (
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {filteredCars.map(car => (
-                                <CarCard key={car._id || car.id} car={car} />
-                            ))}
-                        </div>
-                    ) : (
-                        <div className="flex flex-col items-center justify-center py-20 bg-white dark:bg-gray-800 rounded-xl border border-dashed border-gray-300 dark:border-gray-700 transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-16 h-16 text-gray-300 mb-4">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-                            </svg>
-                            <p className="text-xl text-gray-500 dark:text-gray-400 font-medium">No cars found matching your criteria.</p>
-                            <button 
-                                onClick={clearFilters}
-                                className="mt-4 text-indigo-600 dark:text-indigo-400 font-medium hover:underline"
-                            >
-                                Reset all filters
-                            </button>
-                        </div>
-                    )}
-                </div>
-             </div>
-        </Container>
-    );
+          {filteredCars.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredCars.map((car) => (
+                <CarCard key={car.id} car={car} />
+              ))}
+            </div>
+          ) : (
+            <div className="py-20 text-center border border-dashed border-[var(--line)] rounded-xl bg-[var(--surface)]">
+              <p className="text-[var(--muted)] mb-4">No cars found matching your criteria.</p>
+              <button onClick={clearFilters} className="text-[var(--accent)] font-semibold hover:underline">
+                Reset filters
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    </Container>
+  );
 };
 
 export default AllCarsList;

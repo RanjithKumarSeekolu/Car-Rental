@@ -1,84 +1,101 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useCarStore from "../../../store/useCarStore";
-import CarCard from "./CarCard";
-import Button from "../../../components/ui/Button";
-import Container from "../../../components/ui/Container";
+import CarCard, { CarCardSkeleton } from "./CarCard";
+
+const categories = [
+  "Sports",
+  "SUV",
+  "Sedan",
+  "Luxury",
+  "Convertible",
+  "Electric",
+  "Hatchback",
+  "Minivan",
+];
 
 const CarCollection = () => {
-  const { cars, loading, fetchCars } = useCarStore();
-  // Simplified category logic for now to ensure it works, reusing some logic from original
-  // But ideally this should be cleaner. 
-  
-  // For this refactor, I'll fetch the cars using the store
+  const { collectionCars, loading, fetchCars } = useCarStore();
+  const [category, setCategory] = useState("Sports");
+
   useEffect(() => {
-    fetchCars(6);
+    fetchCars({ limit: 6, category });
+  }, [fetchCars, category]);
+
+  useEffect(() => {
+    let cancelled = false;
+    const timer = setTimeout(async () => {
+      for (const name of categories) {
+        if (cancelled) return;
+        await fetchCars({ limit: 6, category: name, prefetch: true });
+      }
+    }, 250);
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
   }, [fetchCars]);
 
-  const [showCategoryCarsId, setShowCategoryCarsId] = useState(null); // Initialize to null or a default
-
-  useEffect(() => {
-    if (cars.length > 0 && showCategoryCarsId === null) {
-      const sportsCategory = cars.find(category => category.name === "Sports");
-      if (sportsCategory) {
-        setShowCategoryCarsId(sportsCategory.id);
-      } else {
-        setShowCategoryCarsId(cars[0].id);
-      }
-    }
-  }, [cars, showCategoryCarsId]);
-
-  
-  if (loading && cars.length === 0) return <div className="text-center py-20">Loading...</div>;
-
   return (
-    <div className="py-20 bg-gray-50 dark:bg-gray-950 transition-colors duration-300">
-      <Container>
-        <div className="text-center mb-12">
-           <span className="text-blue-800 dark:text-blue-400 font-semibold uppercase tracking-wider">Collection</span>
-           <h2 className="text-4xl font-bold mt-2 text-gray-900 dark:text-white">Our Collection Cars</h2>
+    <section className="py-20 md:py-24 bg-[var(--bg)]">
+      <div className="max-w-7xl mx-auto px-5 md:px-8">
+        <div className="text-center mb-10">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--accent)] mb-3">
+            Collection
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-[var(--ink)] tracking-tight">
+            Our featured cars
+          </h2>
         </div>
 
-        {/* Category Tabs (Simplified for brevity in overhaul, can be expanded) */}
-        <div className="flex justify-center flex-wrap gap-4 mb-10 border-b border-gray-200 dark:border-gray-800 pb-4">
-             {cars.map((category) => (
-               <button 
-                 key={category.id}
-                 onClick={() => setShowCategoryCarsId(category.id)}
-                 className={`px-4 py-2 rounded-full transition-all font-medium ${
-                    showCategoryCarsId === category.id 
-                    ? 'bg-black text-white dark:bg-white dark:text-black' 
-                    : 'text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800'
-                 }`}
-               >
-                 {category.name}
-               </button>
-             ))}
+        <div className="flex justify-center flex-wrap gap-2 mb-12" role="tablist" aria-label="Car categories">
+          {categories.map((name) => (
+            <button
+              key={name}
+              type="button"
+              role="tab"
+              aria-selected={category === name}
+              onMouseEnter={() => fetchCars({ limit: 6, category: name, prefetch: true })}
+              onFocus={() => fetchCars({ limit: 6, category: name, prefetch: true })}
+              onClick={() => setCategory(name)}
+              className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${
+                category === name
+                  ? "btn-navy"
+                  : "bg-[var(--surface)] !text-[var(--ink)] border border-[var(--line)] hover:border-[var(--navy)]"
+              }`}
+            >
+              {name}
+            </button>
+          ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {cars.map((category) => {
-                if (category.id === showCategoryCarsId) {
-                    return category.cars.map(car => (
-                        <CarCard key={car.id} car={car} />
-                    ));
-                }
-                return null;
-            })}
+        <div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7"
+          aria-busy={loading}
+        >
+          {loading ? (
+            Array.from({ length: 6 }, (_, i) => <CarCardSkeleton key={i} />)
+          ) : collectionCars.length > 0 ? (
+            collectionCars.map((car) => (
+              <CarCard key={car.id} car={car} animate={false} />
+            ))
+          ) : (
+            <p className="col-span-full text-center text-[var(--muted)]">
+              No cars found for this category.
+            </p>
+          )}
         </div>
 
-        {/* <div className="flex justify-end mt-12">
-            <Link to="/allCars">
-                <Button variant="primary" size="lg">
-                    See all cars
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4 ml-2 inline-block">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-                    </svg>
-                </Button>
-            </Link>
-        </div> */}
-      </Container>
-    </div>
+        <div className="flex justify-center mt-12">
+          <Link
+            to="/allCars"
+            className="inline-flex items-center gap-2 px-7 py-3 rounded-[var(--radius-sm)] border border-[var(--navy)] !text-[var(--navy)] dark:border-[var(--accent)] dark:!text-[var(--accent)] font-semibold hover:bg-[var(--navy)] hover:!text-[var(--on-navy)] dark:hover:bg-[var(--accent)] dark:hover:!text-[var(--accent-text)] transition"
+          >
+            See all cars →
+          </Link>
+        </div>
+      </div>
+    </section>
   );
 };
 

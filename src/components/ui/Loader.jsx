@@ -1,9 +1,10 @@
 import React from "react";
 
-const Loader = () => {
+const Loader = ({ label = "Loading..." }) => {
   return (
-    <div className="flex justify-center items-center py-20">
-      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-800"></div>
+    <div className="flex flex-col justify-center items-center gap-3 py-20" role="status" aria-live="polite">
+      <div className="animate-spin rounded-full h-11 w-11 border-2 border-[var(--line)] border-t-[var(--accent)]" />
+      <p className="text-sm text-[var(--muted)]">{label}</p>
     </div>
   );
 };

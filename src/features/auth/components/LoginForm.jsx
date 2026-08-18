@@ -16,12 +16,11 @@ const LoginForm = () => {
     setError("");
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      // Auth state change will be picked up by useAuthStore
-    } catch (error) {
-      console.error("Login error:", error.message);
+    } catch (err) {
+      console.error("Login error:", err.message);
       setError("Failed to sign in. Check your email and password.");
     } finally {
-        setLoading(false);
+      setLoading(false);
     }
   };
 
@@ -30,8 +29,8 @@ const LoginForm = () => {
     setError("");
     try {
       await signInWithPopup(auth, provider);
-    } catch (error) {
-      console.error("Google Login error:", error.message);
+    } catch (err) {
+      console.error("Google Login error:", err.message);
       setError("Failed to sign in with Google.");
     } finally {
       setLoading(false);
@@ -41,7 +40,11 @@ const LoginForm = () => {
   return (
     <div className="flex flex-col gap-4 w-full">
       <form onSubmit={handleLogin} className="flex flex-col gap-4 w-full">
-        {error && <div className="text-red-500 text-sm bg-red-50 p-2 rounded">{error}</div>}
+        {error && (
+          <div className="text-sm text-red-600 bg-red-50 border border-red-100 px-3 py-2 rounded-[var(--radius-sm)]">
+            {error}
+          </div>
+        )}
         <Input
           label="Email"
           type="email"
@@ -58,24 +61,24 @@ const LoginForm = () => {
           required
           disabled={loading}
         />
-        <Button type="submit" variant="primary" disabled={loading}>
-          {loading ? "Signing In..." : "Sign In"}
+        <Button type="submit" variant="primary" disabled={loading} className="w-full">
+          {loading ? "Signing in..." : "Sign in"}
         </Button>
       </form>
 
       <div className="relative flex items-center justify-center">
-        <div className="border-t border-gray-200 dark:border-gray-700 w-full" />
-        <span className="bg-white dark:bg-gray-800 px-2 text-sm text-gray-500 dark:text-gray-400 absolute transition-colors duration-300">OR</span>
+        <div className="border-t border-[var(--line)] w-full" />
+        <span className="bg-[var(--surface)] px-2 text-sm text-[var(--muted)] absolute">OR</span>
       </div>
 
-      <Button 
-        type="button" 
-        variant="outline" 
-        onClick={handleGoogleLogin} 
+      <Button
+        type="button"
+        variant="outline"
+        onClick={handleGoogleLogin}
         disabled={loading}
-        className="flex items-center justify-center gap-2"
+        className="w-full flex items-center justify-center gap-2"
       >
-        <img src="https://img.icons8.com/color/48/google-logo.png" alt="Google" className="w-5 h-5" />
+        <img src="https://img.icons8.com/color/48/google-logo.png" alt="" className="w-5 h-5" />
         Sign in with Google
       </Button>
     </div>
